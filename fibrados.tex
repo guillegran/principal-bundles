@@ -37,6 +37,8 @@
 
 \def\pr{\mathrm{pr}}
 \def\CC{\mathbb{C}}
+\def\gg{\mathfrak{g}}
+\def\ad{\mathrm{ad}}
 \def\ZZ{\mathbb{Z}}
 \def\RR{\mathbb{R}}
 \def\KK{\mathbb{K}}
@@ -277,6 +279,152 @@
 			 \end{center}
 			\qed   
 		  \end{ejemplo}
+      \section{Conexiones en fibrados principales}
+      La idea de una conexión en geometría viene de un problema más intuitivo, el del \emph{transporte paralelo}. Supongamos que tenemos un fibrado $E\rightarrow B$ y una curva $\gamma:[0,1]\rightarrow B$. La necesidad de un transporte paralelo se ve evidente a la hora de «derivar» secciones. Es decir, dada una sección $s:B\rightarrow E$, queremos definir su derivada a lo largo de la curva $\gamma$. Para hacer esto necesitamos dar una noción de cociente incremental
+      \begin{equation*}
+	\Delta s= \frac{s(\gamma(t+h))-s(\gamma(t))}{h}.
+      \end{equation*}
+      Sin embargo, si $\gamma(t+h)$ y $\gamma(t)$ son puntos distintos, sus secciones estarán en fibras distintas y la fórmula anterior es absurda, pues pretendemos restar dos vectores que se encuentran en espacios vectoriales distintos. Es por ello que queremos «conectar» las distintas fibras, de modo que la operación anterior tenga sentido. Una forma de conectar las fibras es considerar el fibrado tangente del espacio total. Si tomamos un punto $x\in B$ y un punto $y\in F_x$, entre los vectores tangentes a $E$ en $y$ habrá algunos que sean también tangentes a la fibra, que llamaremos «verticales». Los que nos permiten conectar la fibra $F_x$ con otras distintas son precisamente aquellos que no son verticales, y será en esos en los que centraremos nuestro interés. En un fibrado en general se obtiene la noción de \emph{conexión de Ehresmann}, nosotros sólo consideraremos conexiones en fibrados principales.
+
+      Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$. Sea $x\in B$ e $y\in F_x$. Se define el \emph{subespacio vertical} como $V_y=\ker p_* \subset T_yY$. Un campo vectorial $X$ en $P$ se dice \emph{vertical} si $X_y\in V_y$ para cada $y\in P$. El corchete de Lie de dos campos verticales es vertical. Además, como si consideramos un elemento $g\in G$ y la acción 
+      \begin{align*}
+	 R_g:P&\longrightarrow P\\ 
+	  y &\longmapsto y\cdot g, 
+	\end{align*}
+	entonces $R_{g,*}V_y=V_{y\cdot g}$. Decimos entonces que $V\subset TP$ es una \emph{distribución $G$-invariante}. Una conexión será simplemente otra distribución $G$-invariante complementaria a esta:
+	\begin{defn}
+	  Una \emph{conexión} en $P$ es una distribución de subespacios \emph{horizontales} $H_y\subset T_yY$ complementarios a $V_y$:
+	  \begin{equation*}
+	    T_yP=V_y \oplus H_y
+	  \end{equation*}
+	  y tal que $R_{g,*}H_y=H_{y\cdot g}$.
+	\end{defn}
+
+	La acción de $G$ en $P$ define una aplicación $\sigma:\gg\rightarrow \mathfrak{X}(P)$, que a cada $\xi\in \gg$ le asigna el \emph{campo fundamental} $\sigma(\xi)$ cuyo valor en un punto $y\in P$ es
+	\begin{equation*}
+	  \sigma_y(\xi)=\left.\frac{d}{dt}\right|_{t=0}(y\cdot \exp(t\xi)).
+	\end{equation*}
+	Nótese que 
+	\begin{equation*}
+	  p_* \sigma_y(\xi)=\left. \frac{d}{dt} \right|_{t=0}p(y\cdot \exp(t\xi))=\left. \frac{d}{dt} \right|_{t=0}p(y)=0,
+	\end{equation*}
+	de modo que $\sigma(\xi)$ es un campo vertical. De hecho, como la acción de $G$ es libre, la aplicación $\xi\mapsto \sigma_y(\xi)$ es un isomorfismo $\sigma_y: \gg \rightarrow V_y$ para cada $y$. Podemos ver entonces cuál es la relación entre la acción $R_{g,*}$ sobre $V_y$ inducida por la acción del grupo $G$ sobre $P$ y la representación adjunta $\ad_g$. Por definición,
+	\begin{align*}
+	  R_{g,*}\sigma_y(\xi)&=\left.\frac{d}{dt}\right|_{t=0}R_g(y\cdot \exp(t\xi))=\left.\frac{d}{dt}\right|_{t=0}(y\cdot \exp(t\xi)g)=\left.\frac{d}{dt}\right|_{t=0}(y\cdot gg^{-1}\exp(t\xi)g)\\ &=\left.\frac{d}{dt}\right|_{t=0}(y\cdot g\exp(t\ad_{g^{-1}}\xi))=\sigma_{y\cdot g}(\ad_{g^{-1}}\xi).
+	\end{align*}
+	Por tanto, $R_{g,*}\sigma(\xi)=\sigma(\ad_{g^{-1}}\xi)$.
+	      
+	El subespacio horizontal $H_y\subset T_yP$ es un subespacio vectorial que podemos ver como el conjunto de ceros de $k=\dim G$ ecuaciones lineales $T_yP \rightarrow \RR$ o, lo que es lo mismo, como el núcleo de $k$ $1$-formas en $y$. Podemos pensar en cada una de estas $1$-formas como las componentes de una $1$-forma $\omega$ con valores en un espacio vectorial $k$-dimensional, concretamente, como $\omega$ ha de anular vectores horizontales, podemos definirla por lo que sucede en el espacio $V_y$ que, como ya hemos visto, se identifica de forma natural con el álgebra de Lie $\gg$. Así, definimos:
+	\begin{defn}
+	  La \emph{$1$-forma de conexión} de una conexión $H\subset TP$ es la $1$-forma con valores en $\gg$, $\omega\in \Omega^1(P;\gg)$ definida por
+	  \begin{equation*}
+	    \omega(Y)=
+	    \begin{cases}
+	      \xi & \text{si } Y=\sigma(\xi), \\
+	      0 & \text{si } Y \text{ es horizontal.}
+	    \end{cases}
+	  \end{equation*}
+	  La relación entre la acción del grupo en $P$ y la representación adjunta también se manifiesta en la conexión:
+	  \begin{prop}
+	    La $1$-forma de conexión cumple
+	    \begin{equation*}
+	      R^*_g\omega=\ad_{g^-1}\circ \omega.
+	    \end{equation*}
+	  \end{prop}
+	  \begin{proof}
+	    Sea un vector $Y_y\in H_y$, de modo $\omega(Y_y)=0$. Por la $G$-invariancia de $H$, $R_{g,*}Y_y\in H_{y\cdot g}$, luego $R_g^* \omega(Y_y)=0$ y se satisface trivialmente la igualdad. Por otro lado, si $Y_y=\sigma_y(\xi)$ para cierto $\xi \in \gg$, entonces
+	    \begin{equation*}
+	      R_g^*\omega(\sigma(\xi))=\omega(R_{g,*}\sigma(\xi))=\omega(\sigma(\ad_{g^-1}\xi))=\ad_{g^{-1}}\xi.
+	    \end{equation*}
+	  \end{proof}
+	\end{defn}
+	Recíprocamente, una $1$-forma de estas características induce automáticamente la conexión $H=\ker \omega$.
+
+	Para cerrar la sección, vamos a ver cómo es posible obtener una noción de transporte paralelo a partir de una conexión. En primer lugar, consideremos $p:P\rightarrow B$ un fibrado principal con una conexión $H\subset TP$ y tomemos $x\in B$ e $y\in F_x$. Como $p_*:T_yP \rightarrow T_xB$ es sobreyectiva y su núcleo es precisamente $V_y$, tenemos que a cada vector $X_x\in T_xB$ le podemos asignar un único vector horizontal $X_y^h\in H_y$ tal que $p^*(X_y^h) =X_x$. Este nuevo vector se denomina el \emph{levantamiento horizontal} de $X_x$. 
+	\begin{prop}
+	  Sea $\omega$ la $1$-forma de conexión. Si tenemos un camino diferenciable $\gamma:[0,1]\rightarrow B$ y fijamos un punto $y\in F_{\gamma(0)}$, entonces existe un camino diferenciable $\gamma^h:[0,1]\rightarrow P$ tal que $\dot{\gamma}^h(t)\in H_{\gamma^h(t)}$, $\gamma^h(0)=y$ y $p\circ \gamma^h=\gamma$.
+	\end{prop}
+
+	\begin{proof}
+	  Dado $\gamma:[0,1]\rightarrow B$, podemos considerar el \emph{fibrado pull-back}, con espacio total
+	  \begin{equation*}
+	    \gamma^*P=\left\{ (t,y)\in [0,1]\times P | \gamma(t)=p(y) \right\}
+	  \end{equation*}
+	  con $p':\gamma^*P \rightarrow [0,1]$ tal que $p(t,y)=t$. Consideramos la aplicación $\Phi$ dada por el diagrama
+	  \begin{center}
+	    \begin{tikzcd}
+\gamma^*P	      \arrow{r}{\Phi}\arrow{d}[anchor=east]{p'} & P\arrow{d}[anchor=west]{p} \\ 
+\left[0,1\right] \arrow{r}[anchor=south]{\alpha} & B
+	     \end{tikzcd}
+	   \end{center}
+	   y el pullback de la $1$-forma de conexión, $\Phi^*\omega$, que a su vez nos da una conexión en $\gamma^*P$. Consideramos el levantamiento horizontal $\frac{\partial}{\partial t}^h$ con respecto a $\Phi^*\omega$ y lo integramos, de modo que existe una única curva horizontal $\eta:[0,1]\rightarrow \gamma^*P$ con $\eta(0)=\Phi^{-1}(y)$. Como esta curva es horizontal, $\gamma^h=\Phi \circ \eta$ es también horizontal y $\gamma^h(0)=y$ por construcción.
+	\end{proof}
+	Vemos entonces como este levantamiento nos da una manera de «conectar las fibras», explícitamente:
+	\begin{align*}
+	  F_{\gamma(0)}&\longrightarrow F_{\gamma(1)}\\ 
+	    y &\longmapsto \gamma^h(1). 
+	  \end{align*}
+	  A partir de esta definición es posible entonces construir un transporte paralelo y una derivada de secciones, como planteábamos en la motivación al inicio de esta sección.
+
+	\section{La curvatura de una conexión}
+	Sea $p:P\rightarrow B$ un fibrado principal y $H\subset TP$ una conexión en $P$ con $1$-forma de conexión $\omega$. Por definición, dado $y\in P$, $T_yP=V_y\oplus H_y$, de modo que cualquier vector $Y_y \in T_yP$ se descompone de forma única como $Y_y=Y_y^v+Y_y^h$, con $Y_y^v\in V_y$ e $Y_y^h\in H_y$.  
+	\begin{defn}
+	  Se define la \emph{curvatura} $\Omega \in \Omega^2(P;\gg)$ de la conexión $H$ como 
+	  \begin{equation*}
+	    \Omega(Y_y,Z_y)=d\omega(Y_y^h,Z_y^h),
+	  \end{equation*}
+	  con $Y_y, Z_y \in T_y P$ e $y\in P$.
+	\end{defn}
+
+	La interpretación geométrica de la curvatura es clara si consideramos
+	\begin{equation*}
+	  \Omega(Y,Z)=d\omega(Y^h,Z^h)=Y^h\omega(Z^h)-Z^h\omega(Y^h)-\omega([Y^h,Z^h])=-\omega([Y^h,Z^h]),
+	\end{equation*}
+	ya que $\omega$ se anula en los vectores horizontales. De aquí deducimos que $\Omega$ se anula si y sólo si $[Y^h,Z^h]$ es horizontal, es decir, si la distribución $H$ es integrable. Tenemos entonces que la curvatura en cierto modo «registra el fallo en la integrabilidad de $H$».
+	      
+	Vamos a hallar ahora dos fórmulas con la curvatura.
+	\begin{prop}[Ecuación de estructura]
+	  \begin{equation*}
+	    \Omega=d\omega + [\omega,\omega]
+	  \end{equation*}
+	  (actuando sobre vectores $Y,Z$, tenemos $\Omega(Y,Z)=d\omega(Y,Z)+[\omega(Y),\omega(Z)]$).
+	\end{prop}
+	\begin{proof}
+	  Dividimos la demostración en tres casos:
+	  \begin{itemize}
+	    \item Si $Y,Z$ son horizontales, $\omega(Y)=\omega(Z)=0$ y, como $Y=Y^h$ y $Z=Z^h$, la igualdad se cumple trivialmente.
+	    \item Si $Y,Z$ son verticales, podemos suponer $Y=\sigma(\xi)$ y $Z=\sigma(\eta)$, con $\xi, \eta \in \gg$. Como $Y^h=Z^h=0$, basta ver que $d\omega(Y,Z)=-[\omega(Y),\omega(Z)]$. Pero
+	      \begin{align*}
+		d\omega(Y,Z)& =Y\omega(Z)-Z \omega(Y)-\omega([Y,Z])=-\omega([Y,Z])=-[\omega(Y),\omega(Z)],
+	      \end{align*}
+	      ya que $[X,Y]=[\sigma(\xi),\sigma(\eta)]=\sigma[\xi,\eta]$, $Y \omega(Z)=Y(\eta)=0$ y $Z \omega(Y)=Z(\xi)=0$.
+	    \item Si $Y$ es horizontal y $Z=\sigma(\xi)$ es vertical, $\omega(Y)=0$ e $Y\omega(Z)=Y(\xi)=0$. Además, como $Z^h=0$, $\omega([Y^h,Z^h])=0$. Por tanto, la igualdad se reduce a ver que $-\omega([Y,Z])=0$, pero esto es cierto porque 
+	      \begin{equation*}
+		[Z,Y]=L_Z Y=\left.\frac{d}{dt}\right|_{t=0} R_{\exp(-t\xi),*}W=\left.\frac{d}{dt}\right|_{t=0} W_t=W,
+	      \end{equation*}
+	      con $W_t$ y $W$ vectores horizontales, por la $G$-equivariancia de la conexión. Por tanto, $-\omega([Y,Z])=\omega(W)=0$ por ser $W$ horizontal.
+	  \end{itemize}
+
+	\end{proof}
+
+	\begin{prop}[Identidad de Bianchi]
+	  \begin{equation*}
+	    d\omega(Y^h,Z^h,W^h)=0
+	  \end{equation*}
+	  para cualesquiera vectores $Y,Z,W$.
+	\end{prop}
+	\begin{proof}
+	  Por la ecuación de estructura $\Omega=d\omega + [\omega,\omega]$, luego
+	  \begin{equation*}
+	    d\Omega=d[\omega,\omega]=[d\omega,\omega]-[\omega,d\omega].
+	  \end{equation*}
+	  Ahora, recordemos que la notación del corchete en las formas lo que representaba es
+	  \begin{equation*}
+	    [d\omega,\omega](Y,Z,W)=[d\omega(Y,Z),\omega(W)]+[d\omega(W,Y), \omega(Z)]+[d\omega(Z,W),\omega(Y)]
+	  \end{equation*}
+	  de modo que $d\omega(Y^h,Z^h,W^h)=0$ porque $\omega$ se anula en los vectores horizontales.
+	\end{proof}
+	    
 		  \section{Fibrados asociados}
 Supongamos un grupo de Lie $G$ que actúa diferenciablemente en una variedad diferenciable $F$ por la izquierda y consideremos un fibrado principal $p:P\rightarrow B$ con fibra $G$.
 \begin{defn}
@@ -317,7 +465,7 @@ Veamos que esta definición da un fibrado con fibra $F$. Las trivializaciones de
 	Sean $M$ una variedad diferenciable de dimensión $n$ y $L(M)\rightarrow M$ el fibrado de referencias. Consideramos la fibra $\RR^n$ con la acción canónica de $\mathrm{GL}(n,\RR)$ sobre $\RR^n$. Tenemos entonces un isomorfismo
 	\begin{align*}
 	  L(M)\times_{\mathrm{GL}(n,\RR)} \RR^n&\longrightarrow TM\\ 
-	   [\psi, \ve{v}] &\longmapsto \psi(\ve{v}), 
+	   [(\psi, \ve{v})] &\longmapsto \psi(\ve{v}), 
 	  \end{align*}
 	  donde vemos $\psi$ como un isomorfismo $\psi:\RR^n \rightarrow T_{p(\psi)}M$. Esta aplicación está bien definida ya que si tomo otro representante de la misma clase, $(\psi \cdot A, A^{-1} \cdot \ve{v})$, con $A\in \mathrm{GL}(n,\RR)$, entonces $\psi\cdot A (A^{-1} \cdot \ve{v})= \psi(A A^{-1} \ve{v})=\psi(\ve{v})$. 
 
@@ -325,15 +473,16 @@ Veamos que esta definición da un fibrado con fibra $F$. Las trivializaciones de
 	  \qed
       \end{ejemplo}
 
-      [Construcción general]
+      Sea ahora $P\rightarrow B$ un fibrado principal con fibra $G$. De especial interés para nosotros es el fibrado asociado a la representación adjunta $\ad:G\rightarrow \mathrm{Aut}(\gg)$, que naturalmente proviene de una acción de $G$ en $\gg$. Este fibrado $\ad\ P:=P\times_G \gg$ se denomina el \emph{fibrado adjunto} de $P\rightarrow B$. El fibrado adjunto nos permite ver la curvatura de una conexión como una $2$-forma definida, no sobre el espacio total, sino sobre la base. Así, si tenemos una conexión en $P$ y $\Omega$ es su curvatura, podemos definir la $2$-forma con valores en $\ad\ P$, $\tilde{\Omega}\in \Omega(B,\ad\ P)$ tal que
+      \begin{equation*}
+	\tilde{\Omega}_x(X_x,Y_x)=[(y,\Omega_y(X_y^h,Y_y^h))],
+      \end{equation*}
+      donde $y\in F_x$, $X_x,Y_x \in T_xB$ y $X_y^h,Y_y^h$ son sus levantamientos horizontales a $T_y P$. Esta $2$-forma está bien definida, ya que si tomamos otro punto $y\cdot g \in F_x$ entonces
+      \begin{align*}
+	[(y\cdot g,\Omega_{y\cdot g}(X^h_{y\cdot g},Y^h_{y\cdot g})]&=[(y\cdot g, (R^*_g\Omega)_y(X^h_y,Y^h_y))]\\ &=[(y\cdot g,\ad_{g^{-1}}(\Omega_y(X_y^h,Y_y^h)))]\\&=[(y,\Omega_y(X^h_y,Y^h_y))].
+      \end{align*}
 
-      \section{Conexiones en fibrados principales}
-	      
-	      
-
-
-
-	    
+	\section{Clases características}
 \end{document}
 
 
