@@ -1,0 +1,339 @@
+%        File: fibrados.tex
+%     Created: jue dic 06 11:00  2018 C
+% Last Change: jue dic 06 11:00  2018 C
+%
+%\documentclass[12pt,a4paper]{amsart}
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-noquoting]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm, mathtools}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows, babel}
+\usepackage{url}
+\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue]{hyperref}
+\usepackage{graphicx}
+
+%Fuente Palatino:
+%\usepackage[sc]{mathpazo}
+%Fuente Times:
+%\usepackage{newtxtext}
+%\usepackage{newtxmath}
+%Fuente Libertine:
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{prop}[thm]{Proposición}
+\newtheorem{lema}{Lema}
+\newtheorem{corol}[thm]{Corolario}
+\theoremstyle{definition} \newtheorem{defn}[thm]{Definición}
+\theoremstyle{definition} \newtheorem{ejemplo}[thm]{Ejemplo}
+\theoremstyle{definition} \newtheorem{ejercicio}[thm]{Ejercicio}
+\theoremstyle{remark} \newtheorem*{obs}{Observación}
+
+\def\pr{\mathrm{pr}}
+\def\CC{\mathbb{C}}
+\def\ZZ{\mathbb{Z}}
+\def\RR{\mathbb{R}}
+\def\KK{\mathbb{K}}
+\def\SF{\mathbb{S}}
+\def\TT{\mathbb{T}}
+\def\NN{\mathbb{N}}
+\def\HH{\mathbb{H}}
+\def\PP{\mathbb{P}}
+\def\id{\mathrm{id}}
+\def\im{\mathrm{im}\ }
+\def\cc{\mathbf{c}}
+\def\eps{\varepsilon}
+\newcommand{\ve}[1]{\mathbf{#1}}
+
+\DeclarePairedDelimiter\esc{\langle}{\rangle}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+		      \let\emph\relax
+		      \DeclareTextFontCommand{\emph}{\it\bfseries}
+
+
+\title{Introducción a los fibrados principales}
+\author{Guillermo Gallego Sánchez}
+%\date{}
+
+
+\begin{document}
+\maketitle
+\section{Preliminares}
+\section{Fibrados}
+\begin{defn}
+  Un \emph{fibrado} $(E,B,p,F)$ consta de:
+  \begin{itemize}
+    \item un espacio topológico $B$ llamado la \emph{base} del fibrado,
+    \item un espacio topológico $E$ llamado el \emph{espacio total} del fibrado,
+    \item un espacio topológico $F$ llamado la \emph{fibra} del fibrado,
+    \item una aplicación continua $p:E\rightarrow B$ tal que, para cada punto $x\in B$ existe un entorno abierto $U$ de $x$ y un homeomorfismo $\varphi_U:p^{-1}(U) \rightarrow U \times F$, llamado \emph{trivialización}, tal que el siguiente diagrama conmuta
+      \begin{center}
+	\begin{tikzcd}
+	  p^{-1}(U) \arrow{rr}{\varphi_U}\arrow{rd}{p} && U \times F \arrow{ld}{\pr_1}	  \\ 
+	  &U,&
+	\end{tikzcd}
+      \end{center}
+	donde $\pr_1$ denota la proyección al primer factor $(x,y)\mapsto x$.
+  \end{itemize}
+  Generalmente denotaremos un fibrado por $E\rightarrow B$. Si no se especifica, $p$ denotará la aplicación y $F$ la fibra. Si $x\in B$ es un punto, llamamos a $F_x=p^{-1}(x)$ la \emph{fibra sobre $x$}.
+\end{defn}
+  \begin{ejemplo}
+ El ejemplo más simple que podemos considerar es el \emph{fibrado trivial}, $(B\times F, B, \pr_1, F)$, cuyo espacio total es simplemente el producto cartesiano y la aplicación es la proyección al primer factor.
+    \qed
+  \end{ejemplo}
+  \begin{ejemplo}\label{moebius}
+    Un ejemplo de fibrado no trivial viene dado por la \emph{cinta de Moebius}. El espacio total es la susodicha cinta, que podemos describir por
+    \begin{equation*}
+      E=\frac{\left\{ (x,y): x\in \RR, y \in (0,1) \right\}}{(x,y)\sim (x+1,1-y)},
+    \end{equation*}
+    mientras que la base es la circunferencia $$B=\frac{ \left\{ x\in \RR \right\}}{x \sim x+1} \cong \SF^1.$$ La aplicación $p:E\rightarrow B$ es la proyección en la primera coordenada. 
+    \qed
+  \end{ejemplo}
+
+    Consideremos ahora $E\rightarrow B$ un fibrado y $x\in B$ un punto. Sean $U$ y $V$ dos entornos abiertos de $x$ con trivializaciones $\varphi_U$ y $\varphi_V$ respectivamente. El siguiente diagrama conmutativo
+    \begin{center}
+      \begin{tikzcd}
+	U\cap V \times F \arrow{r}{\varphi^{-1}_U} \arrow{rd}{\pr_1} & p^{-1}(U\cap V) \arrow{d}{p} \arrow{r}{\varphi_V}& U\cap V \times F \arrow{ld}{\pr_1} 	\\ 
+&	U\cap V,&
+      \end{tikzcd}
+    \end{center}
+      induce un homeomorfismo
+      \begin{align*}
+	\varphi_V \circ \varphi_U^{-1} :(U\cap V) \times F&\longrightarrow (U\cap V)\times F\\ 
+	(x,y) &\longmapsto (x,\psi_{UV}(x,y)),
+	\end{align*}
+	para cierta $\psi_{UV}:U\cap V \times F \rightarrow F$.
+	En particular, la aplicación
+	\begin{align*}
+	  \psi_{UV,x} :F&\longrightarrow F\\ 
+	  y &\longmapsto \psi_{UV}(x,y), 
+	  \end{align*}
+	  es un homeomorfismo. Se llama \emph{función de transición} entre $U$ y $V$ a la aplicación
+	  \begin{align*}
+	    g_{UV} :U\cap V&\longrightarrow \mathrm{Homeo}(F)\\ 
+	    x &\longmapsto \psi_{UV,x}. 
+	    \end{align*}
+	    Nótese que, si $U,V,W$ son abiertos trivializantes, entonces las funciones de transición cumplen la \emph{condición de cociclo}
+	    \begin{equation*}
+	      g_{UW}=g_{VW}\circ g_{UV}.
+	    \end{equation*}
+	    En particular $g_{UU}=\id$ y $g_{UV}=g_{VU}^{-1}$.
+
+	    Las funciones de transición nos permiten distinguir distintos tipos de fibrados. Es decir, si los elementos que constituyen el fibrado pertenecen a cierta categoría geométrica (por ejemplo, la de las variedades diferenciables) y las funciones de transición son isomorfismos en esa categoría (por ejemplo, difeomorfismos), el fibrado será de un tipo especial, relacionado con esa categoría (por ejemplo, un fibrado diferenciable). Un caso particularmente interesante es el siguiente:
+	    \begin{defn}
+	      Un \emph{fibrado vectorial} $E\rightarrow B$ es un fibrado cuya fibra es un $k$-espacio vectorial $V$ y tal que sus funciones de transición son de la forma 
+	      \begin{align*}
+		g_{UW}:U\cap W&\longrightarrow \mathrm{Aut}(V), 
+		\end{align*}
+		donde $\mathrm{Aut}(V)$ denota el conjunto de automorfismos de $V$. En particular, si $V$ es de dimensión finita $n$, entonces las funciones de transición son de la forma
+	      \begin{align*}
+		g_{UW}:U\cap W&\longrightarrow \mathrm{GL}(n,k), 
+		\end{align*}
+		y al evaluarlas en un punto $g_{UW}(x)$ se llaman \emph{matrices de transición}.
+	    \end{defn}
+	    \begin{defn}
+	      Sea $E\rightarrow B$ un fibrado. Una \emph{sección} del fibrado es una aplicación continua $s:B\rightarrow E$ tal que $p\circ s = \id_B$. Denotamos $\Gamma(E)$ al conjunto de las secciones del fibrado $E\rightarrow B$ y $\Gamma(U,E)$ a las secciones locales definidas en un abierto $U\subset E$.
+	    \end{defn}
+	    \begin{obs}
+	      En el caso del fibrado trivial, $\Gamma(U,E)=C(U,F)$, es decir, las secciones son las aplicaciones continuas del abierto $U$ a la fibra.
+	    \end{obs}
+
+	    Sea $s$ una sección y $U_1$ y $U_2$ dos abiertos trivializantes. Si consideramos las secciones locales $s_{i}:U_i \rightarrow F$ tales que $\varphi_i \circ s(x)=(x,s_i(x))$, entonces 
+	    \begin{equation*}
+	      s_j = g_{ij} s_i,
+	    \end{equation*}
+	    con $g_{ij}=g_{U_iU_j}$ las funciones de transición. Recíprocamente, si defino secciones locales $s_U$ en cada abierto $U\in \mathcal{U}$ de un recubrimiento $\mathcal{U}$ de $B$ por abiertos trivializantes, puedo recuperar una sección $s\in \Gamma(E)$.
+	      
+	    \section{Fibrados principales. Definición y ejemplos}
+	    \begin{defn}
+	      Un \emph{fibrado principal} $(P,B,p,G)$ consta de:
+		  \begin{itemize}
+		    \item una variedad diferenciable $P$,
+		    \item un grupo de Lie $G$ actuando libremente por la derecha sobre $P$:
+		      \begin{align*}
+			 P\times G&\longrightarrow P\\ 
+			  (p,g) &\longmapsto p\cdot g ,
+			\end{align*}
+		    \item $B=P/G$, con una sumersión $p:P\rightarrow P/G$ que es la proyección canónica al cociente.
+		  \end{itemize}
+		  Además, se cumple la condición de trivialidad local: para cada $x \in B$ existe un entorno $U$ de $x$ y un difeomorfismo $\varphi_U:p^{-1}(U) \rightarrow U \times G$ tal que el siguiente diagrama conmuta
+      \begin{center}
+	\begin{tikzcd}
+	  p^{-1}(U) \arrow{rr}{\varphi_U}\arrow{rd}{p} && U \times G \arrow{ld}{\pr_1}	  \\ 
+	  &U,&
+	\end{tikzcd}
+      \end{center}
+      y tal que $\varphi_U(y)=(p(y),g_U(y))$ para cierta aplicación $g_U:p^{-1}(U)\rightarrow G$ con $g_U(y\cdot g)=g_U(y)\cdot g$.
+	    \end{defn}
+      En resumen, podemos pensar en un fibrado principal simplemente como un fibrado sobre una variedad diferenciable cuya fibra es un grupo de Lie.
+	    Si $P\rightarrow B$ es un fibrado principal y $x\in B$, podemos considerar una trivialización $\varphi_U:p^{-1}(U)\rightarrow U \times G$ y una sección local $s_U:U\rightarrow P$ tal que $\varphi_U\circ s_U(x)=(x,1_G)$. Recíprocamente, para cada sección local $s_U:U\rightarrow P$ y para cada $y \in F_x$ hay un único elemento $g_U(y)\in G$ tal que $y=s_U(x) g_U(y)$, de modo que podemos identificar la fibra $F_x$ con $G$. Por otra parte, las funciones de transición son de la forma
+	    \begin{align*}
+	      \varphi_V\circ \varphi_U^{-1} :U\cap V \times G&\longrightarrow U\cap V \times G\\ 
+	      (x,h) &\longmapsto (x,g_U(x,h) g_V(x,h)^{-1}h). 
+	      \end{align*}
+	      De hecho, si llamamos $\bar{g}_{UV}(y)=g_{U}(y)g_V(y)^{-1}$, tenemos que el valor de $\bar{g}_{UV}$ no varía en la fibra en la que se encuentra $y$:
+	      \begin{equation*}
+		\bar{g}_{UV}(y\cdot g)=g_{U}(y\cdot g)g_V(y\cdot g)^{-1}=g_{U}(y)g g^{-1}g_V(y)^{-1}=g_{U}(y)g_V(y)^{-1}=\bar{g}_{UV}(y),
+	      \end{equation*}
+	      de modo que $\bar{g}_{UV}(y)=g_{UV}(p(y))$ para cierta función
+	      \begin{align*}
+		g_{UV} :U\cap V&\longrightarrow G.
+		\end{align*}
+		Por tanto, las funciones de transición son de la forma
+		\begin{align*}
+		   U\cap V \times G&\longrightarrow U\cap V \times G\\ 
+		   (x,h) &\longmapsto (x,g_{UV}(x)h). 
+		  \end{align*}
+
+		  Un primer resultado importante sobre fibrados principales concierne a sus secciones:
+		  \begin{prop}
+		    Un fibrado principal admite una sección global si y sólo si es trivial.
+		  \end{prop}
+		  \begin{proof}
+		    En una dirección está claro, si $\pr_1:B\times G\rightarrow B$ es un fibrado trivial, cualquier función diferenciable $B\rightarrow G$, por ejemplo, la que manda todos los puntos al elemento neutro, define una sección global.
+		    Por otra parte, sea $s:B\rightarrow P$ una sección de $P\rightarrow B$. Definimos la aplicación
+		    \begin{align*}
+		      \varphi: B\times G&\longrightarrow P\\ 
+		        (x,g) &\longmapsto (s(x)\cdot g),
+		      \end{align*}
+		      que es diferenciable por ser composición de aplicaciones diferenciables. Veamos que es biyectiva. En efecto es inyectiva ya que si $s(x)\cdot g=s(y)\cdot g'$, $$y=p(s(y))=p(s(y)\cdot g')=p(s(x) \cdot g)=p(s(x))=x,$$ luego $x=y$, mientras que $g=g'$ por ser la acción libre. Por otra parte, es sobreyectiva ya que si $y\in P$, $F_{p(y)}$ es la órbita de $y$ por la acción de $G$ y, como $s(p(y))\in F_{p(y)}$, existe un $g\in G$ tal que $s(p(y))\cdot g=y$. 
+		  \end{proof}
+
+		  \begin{ejemplo}\label{bormob}
+		    Podemos considerar $P=B=\SF^1\subset \CC$ y 
+		    \begin{align*}
+		      p :\SF^1&\longrightarrow \SF^1\\ 
+		        z &\longmapsto z^2.
+		      \end{align*}
+		      Esto da un fibrado principal con fibra $\ZZ_2$, por medio de la acción
+		      \begin{align*}
+			 \SF^1 \times \ZZ_2&\longrightarrow \SF^1\\ 
+			  (z,\pm 1) &\longmapsto \pm z. 
+			\end{align*}
+			Visualmente puede verse como la proyección del borde de la cinta de Moebius a una circunferencia interior. Se trata de un fibrado no trivial, ya que no admite una sección global. En efecto, una sección global de $p$ sería una raíz cuadrada univaluada en toda la circunferencia y sabemos que eso no puede existir.
+			\qed
+		  \end{ejemplo}
+		  \begin{ejemplo}
+		    Sea $M$ una variedad diferenciable conexa con recubridor universal $\tilde{M}$. La proyección recubridora $p:\tilde{M}\rightarrow M$ da un fibrado principal con fibra $G=\pi_1(M)$ el grupo fundamental de $M$ (en cualquier punto). La acción de $G$ en $\tilde{M}$ es simplemente la acción de monodromía: si $x\in M$ e $y\in F_x$, a cada elemento $g\in G$ le podemos asignar un representante $\gamma_g$ que es un lazo en $M$ con punto base $x$; este lazo levanta a un único camino $\tilde{\gamma}^y_g$ en $\tilde{M}$ con $\tilde{\gamma}^y_g(0)=y$ y podemos definir $y\cdot g=\tilde{\gamma}^y_g(1)$. Además, si $H\lhd G$ es un subgrupo normal de $G$ entonces $\tilde{M}/H\rightarrow M$ es un recubridor regular y también es un fibrado principal con fibra $G/H$.
+
+		  [Seifert-Van Kampen?]
+		  \qed
+		  \end{ejemplo}
+
+		  \begin{ejemplo}
+		    \emph{PENSARLO BIEN}
+		    Sea $P=\SF^3\subset \CC^2$ y $\SF^1\subset \CC$. Consideremos la acción de $\SF^1$ sobre $\SF^3$:
+		    \begin{align*}
+		       \SF^3 \times \SF^1&\longrightarrow \SF^3\\ 
+		       \left( (z_1,z_2),e^{i\phi} \right) &\longmapsto (z_1e^{i\phi},z_2e^{i\phi}). 
+		      \end{align*}
+		      Esta acción nos da la \emph{fibración de Hopf}:
+		      \begin{align*}
+			p :\SF^3&\longrightarrow \SF^2\\ 
+			(z_1,z_2) &\longmapsto (|z_1|^2-|z_2|^2,2z_1\bar{z_2}), 
+			\end{align*}
+			y podemos ver $p:\SF^3\rightarrow \SF^2$.
+			\qed
+		  \end{ejemplo}
+
+		  \begin{ejemplo}
+		    El ejemplo más importante que vamos a considerar en esta sección es el de \emph{fibrado de referencias}. Sea $M$ una variedad diferenciable, el fibrado de referencias está dado por el conjunto
+		    \begin{equation*}
+		      L(M)=\left\{ \mathcal{B}_x: x\in M,\  \mathcal{B}_x \text{ es una base de } T_xM \right\},
+		    \end{equation*}
+		     con la aplicación
+		     \begin{align*}
+		       p :L(M)&\longrightarrow M\\ 
+		       \mathcal{B}_x &\longmapsto x. 
+		       \end{align*}
+
+		       Ahora, en coordenadas locales $(x^1,\dots,x^n)$ en un abierto $U\subset M$, los vectores de una base $\mathcal{B}_x=\left\{ X_{1,x},\dots,X_{n,x} \right\}$ se escribirán como
+		       \begin{equation*}
+			 X_{i,x}=\sum_{j=1}^n a_i^j \frac{\partial}{\partial x^j}.
+		       \end{equation*}
+		       Estos coeficientes $a_i^j$ pueden recogerse en una matriz $A$ con determinante no nulo y tenemos trivializaciones de la forma:
+		       \begin{align*}
+			 p^{-1}(U)&\longrightarrow U\times \mathrm{GL}(n,\RR)\\ 
+			 \mathcal{B}_x &\longmapsto (x,A). 
+			 \end{align*}
+			 Las funciones de transición entre dos abiertos $U$ y $V$ vienen dadas por los cambios de coordenadas y son de la forma $g_{UV} \rightarrow \mathrm{GL}(n,\RR)$. Esto nos da una primera pista de la conexión entre este tipo de fibrados y los fibrados vectoriales.
+
+			 Veamos que, en efecto, el fibrado de referencias es un fibrado principal con fibra $\mathrm{GL}(n,\RR)$. Si $A=(a^j_i)\in \mathrm{GL}(n,\RR)$ y $\mathcal{B}_x=\left\{ X_{1,x},\dots,X_{n,x} \right\}$ es una base de $T_xM$, podemos definir la acción simplemente como
+			 \begin{equation*}
+			   \mathcal{B}_x\cdot A =\left\{ X'_{1,x},\dots,X'_{n,x} \right\},
+			 \end{equation*}
+			 con $X'_{i,x}=\sum_{j=1}^n a^j_i X_{i,x}$. Equivalentemente, podemos ver los elementos de $L(M)$ como isomorfismos lineales $\psi:\RR^n \rightarrow T_{p(\psi)} M$ y la acción de $\mathrm{GL}(n,\RR)$ es simplemente
+			 \begin{center}
+			   \begin{tikzcd}
+			     \RR^n \arrow{r}{A} &\RR^n \arrow{r}{\psi} &T_{p(\psi)}M.
+			   \end{tikzcd}
+			 \end{center}
+			\qed   
+		  \end{ejemplo}
+		  \section{Fibrados asociados}
+Supongamos un grupo de Lie $G$ que actúa diferenciablemente en una variedad diferenciable $F$ por la izquierda y consideremos un fibrado principal $p:P\rightarrow B$ con fibra $G$.
+\begin{defn}
+  Se define el \emph{fibrado asociado a $p:P\rightarrow B$ via la acción de $G$ en $F$}, y se denota por $P\times_G F$, como el cociente $(P\times F)/G$ por la acción
+  \begin{align*}
+     (P\times F) \times G&\longrightarrow P\times F\\ 
+     \left( (y,f),g \right) &\longmapsto (y\cdot g,g^{-1}\cdot f), 
+    \end{align*}
+    con la aplicación 
+    \begin{align*}
+      p_F :P\times_G F&\longrightarrow B\\ 
+      [(y,f)] &\longmapsto p(y). 
+      \end{align*}
+\end{defn}
+
+Veamos que esta definición da un fibrado con fibra $F$. Las trivializaciones de $P$, $\varphi_U:p^{-1}(U) \rightarrow U\times G$ inducen trivializaciones del fibrado asociado
+\begin{align*}
+  \varphi_U^F :p_F^{-1}(U)\cong U\times G \times F&\longrightarrow U\times F\\ 
+  (x,g,f) &\longmapsto (x,gf) .
+  \end{align*}
+  Ademaś, las funciones de transición de $P\rightarrow B$,
+  \begin{align*}
+    \psi_{UV} :(U\cap V) \times G&\longrightarrow (U\cap V) \times G\\ 
+    (x,g) &\longmapsto (x,h_{UV}g), 
+    \end{align*}
+    con $h_{UV}\in C^{\infty}(U\cap V,G)$ inducen funciones de transición en el fibrado asociado
+    \begin{align*}
+      \psi_{UV}^F :(U\cap V)\times F&\longrightarrow (U\cap V)\times F\\ 
+      (x,f) &\longmapsto (x,h_{UV}(x)\cdot f). 
+      \end{align*}
+
+      \begin{ejemplo}
+	Consideremos el fibrado principal $\SF^1 \rightarrow \SF^1$ del Ejemplo \ref{bormob}. Sea la fibra $[-1,1]$ y $\ZZ_2=\left\{ -1,1 \right\}$ actuando sobre $[-1,1]$ como $(f,\pm 1) \rightarrow \pm f$. Entonces su fibrado asociado $\SF^1\times_{\ZZ_2} [-1,1]\rightarrow \SF^1$ es la cinta de Moebius, vista como en el Ejemplo \ref{moebius}. Sin embargo, si consideramos la acción trivial $f\rightarrow f$, entonces el fibrado es el trivial, en ese caso $\SF^1\times_{\ZZ^2}[-1,1]$ es simplemente un cilindro.
+	\qed
+      \end{ejemplo}
+
+      \begin{ejemplo}
+	Sean $M$ una variedad diferenciable de dimensión $n$ y $L(M)\rightarrow M$ el fibrado de referencias. Consideramos la fibra $\RR^n$ con la acción canónica de $\mathrm{GL}(n,\RR)$ sobre $\RR^n$. Tenemos entonces un isomorfismo
+	\begin{align*}
+	  L(M)\times_{\mathrm{GL}(n,\RR)} \RR^n&\longrightarrow TM\\ 
+	   [\psi, \ve{v}] &\longmapsto \psi(\ve{v}), 
+	  \end{align*}
+	  donde vemos $\psi$ como un isomorfismo $\psi:\RR^n \rightarrow T_{p(\psi)}M$. Esta aplicación está bien definida ya que si tomo otro representante de la misma clase, $(\psi \cdot A, A^{-1} \cdot \ve{v})$, con $A\in \mathrm{GL}(n,\RR)$, entonces $\psi\cdot A (A^{-1} \cdot \ve{v})= \psi(A A^{-1} \ve{v})=\psi(\ve{v})$. 
+
+	  Más generalmente, si $E\rightarrow B$ es un fibrado vectorial cualquiera con fibra un espacio vectorial $V$, entonces podemos considerar el fibrado $L(E)\rightarrow B$ de las bases de las fibras de $E$, que es un fibrado principal con fibra $\mathrm{Aut}(V)$ y tal que $E\cong L(E)\times_{\mathrm{Aut}(V)} V$.
+	  \qed
+      \end{ejemplo}
+
+      [Construcción general]
+
+      \section{Conexiones en fibrados principales}
+	      
+	      
+
+
+
+	    
+\end{document}
+
+
