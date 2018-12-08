@@ -38,6 +38,7 @@
 \def\pr{\mathrm{pr}}
 \def\CC{\mathbb{C}}
 \def\gg{\mathfrak{g}}
+\def\xx{\mathtt{x}}
 \def\ad{\mathrm{ad}}
 \def\ZZ{\mathbb{Z}}
 \def\RR{\mathbb{R}}
@@ -60,9 +61,9 @@
 		      \DeclareTextFontCommand{\emph}{\it\bfseries}
 
 
-\title{Introducción a los fibrados principales}
+		      \title{\textbf{Geometría de superficies topológicas} \\ Introducción a los fibrados principales}
 \author{Guillermo Gallego Sánchez}
-%\date{}
+\date{}
 
 
 \begin{document}
@@ -140,6 +141,9 @@
 		\end{align*}
 		y al evaluarlas en un punto $g_{UW}(x)$ se llaman \emph{matrices de transición}.
 	    \end{defn}
+
+	    [\emph{Funciones de transición determinan el fibrado}]
+
 	    \begin{defn}
 	      Sea $E\rightarrow B$ un fibrado. Una \emph{sección} del fibrado es una aplicación continua $s:B\rightarrow E$ tal que $p\circ s = \id_B$. Denotamos $\Gamma(E)$ al conjunto de las secciones del fibrado $E\rightarrow B$ y $\Gamma(U,E)$ a las secciones locales definidas en un abierto $U\subset E$.
 	    \end{defn}
@@ -224,8 +228,6 @@
 		  \end{ejemplo}
 		  \begin{ejemplo}
 		    Sea $M$ una variedad diferenciable conexa con recubridor universal $\tilde{M}$. La proyección recubridora $p:\tilde{M}\rightarrow M$ da un fibrado principal con fibra $G=\pi_1(M)$ el grupo fundamental de $M$ (en cualquier punto). La acción de $G$ en $\tilde{M}$ es simplemente la acción de monodromía: si $x\in M$ e $y\in F_x$, a cada elemento $g\in G$ le podemos asignar un representante $\gamma_g$ que es un lazo en $M$ con punto base $x$; este lazo levanta a un único camino $\tilde{\gamma}^y_g$ en $\tilde{M}$ con $\tilde{\gamma}^y_g(0)=y$ y podemos definir $y\cdot g=\tilde{\gamma}^y_g(1)$. Además, si $H\lhd G$ es un subgrupo normal de $G$ entonces $\tilde{M}/H\rightarrow M$ es un recubridor regular y también es un fibrado principal con fibra $G/H$.
-
-		  [Seifert-Van Kampen?]
 		  \qed
 		  \end{ejemplo}
 
@@ -340,6 +342,8 @@
 	\end{defn}
 	Recíprocamente, una $1$-forma de estas características induce automáticamente la conexión $H=\ker \omega$.
 
+	[\emph{Conexiones como pegado de secciones locales}]
+
 	Para cerrar la sección, vamos a ver cómo es posible obtener una noción de transporte paralelo a partir de una conexión. En primer lugar, consideremos $p:P\rightarrow B$ un fibrado principal con una conexión $H\subset TP$ y tomemos $x\in B$ e $y\in F_x$. Como $p_*:T_yP \rightarrow T_xB$ es sobreyectiva y su núcleo es precisamente $V_y$, tenemos que a cada vector $X_x\in T_xB$ le podemos asignar un único vector horizontal $X_y^h\in H_y$ tal que $p^*(X_y^h) =X_x$. Este nuevo vector se denomina el \emph{levantamiento horizontal} de $X_x$. 
 	\begin{prop}
 	  Sea $\omega$ la $1$-forma de conexión. Si tenemos un camino diferenciable $\gamma:[0,1]\rightarrow B$ y fijamos un punto $y\in F_{\gamma(0)}$, entonces existe un camino diferenciable $\gamma^h:[0,1]\rightarrow P$ tal que $\dot{\gamma}^h(t)\in H_{\gamma^h(t)}$, $\gamma^h(0)=y$ y $p\circ \gamma^h=\gamma$.
@@ -365,11 +369,17 @@
 	    y &\longmapsto \gamma^h(1). 
 	  \end{align*}
 	  A partir de esta definición es posible entonces construir un transporte paralelo y una derivada de secciones, como planteábamos en la motivación al inicio de esta sección.
+	  \begin{defn}
+	    Sea $P\rightarrow B$ un fibrado principal con una $1$-forma de conexión $\omega$. Se define la \emph{derivada covariante} de una forma $\alpha\in \Gamma^k(P,\gg)$ como la $(k+1)$-forma con valores en $\gg$
+	    \begin{equation*}
+	      D_\omega \alpha(Y_1,\dots,Y_k)=d\alpha(Y_1^h,\dots,Y_k^h).
+	    \end{equation*}
+	  \end{defn}
 
 	\section{La curvatura de una conexión}
 	Sea $p:P\rightarrow B$ un fibrado principal y $H\subset TP$ una conexión en $P$ con $1$-forma de conexión $\omega$. Por definición, dado $y\in P$, $T_yP=V_y\oplus H_y$, de modo que cualquier vector $Y_y \in T_yP$ se descompone de forma única como $Y_y=Y_y^v+Y_y^h$, con $Y_y^v\in V_y$ e $Y_y^h\in H_y$.  
 	\begin{defn}
-	  Se define la \emph{curvatura} $\Omega \in \Omega^2(P;\gg)$ de la conexión $H$ como 
+	  Se define la \emph{curvatura} $\Omega \in \Omega^2(P;\gg)$ de la conexión $H$ como $\Omega=D_\omega \omega$, es decir
 	  \begin{equation*}
 	    \Omega(Y_y,Z_y)=d\omega(Y_y^h,Z_y^h),
 	  \end{equation*}
@@ -408,8 +418,9 @@
 	\end{proof}
 
 	\begin{prop}[Identidad de Bianchi]
+	  Se tiene que $D_\omega \Omega=0$, es decir
 	  \begin{equation*}
-	    d\omega(Y^h,Z^h,W^h)=0
+	    d\Omega(Y^h,Z^h,W^h)=0
 	  \end{equation*}
 	  para cualesquiera vectores $Y,Z,W$.
 	\end{prop}
@@ -483,6 +494,198 @@ Veamos que esta definición da un fibrado con fibra $F$. Las trivializaciones de
       \end{align*}
 
 	\section{Clases características}
+	La idea fundamental que motiva la introducción de las clases características surge del teorema de Gauss-Bonnet. Recordemos que este teorema nos dice que si $(M,g)$ es una superficie riemanniana conexa, orientada y compacta, entonces
+	\begin{equation*}
+	  \int_M K v_g = 2\pi \chi(M),
+	\end{equation*}
+	donde $K$ es la curvatura de Gauss de la superficie, $v_g$ la forma de área y $\chi(M)$ la característica de Euler de la superficie. De lo que es importante darse cuenta cuando se observa esta igualdad es de que se está identificando una expresión \textit{geométrica}, la del lado izquierdo, con otra \textit{topológica}, el lado derecho de la ecuación. Las clases características aparecen en el contexto de buscar identidades de este tipo en casos más generales. 
+
+	Supongamos que $M$ es una variedad diferenciable de dimensión $n>2$ y que tenemos un fibrado principal $P\rightarrow M$. Si fijamos una conexión en $P$, la curvatura de esta conexión puede verse como una $2$-forma en $M$ con valores en $\ad\ P$, de modo que no es algo que en principio podamos integrar a lo largo de toda la variedad. Para solventar esto, si $n=2k$ es par podemos considerar la $n$ forma $\Omega\wedge \overset{(k)}{\cdots} \wedge \Omega$. Además, podemos tratar de encontrar funciones $f: \ad\ P \rightarrow \RR$, de modo que $f(\Omega\wedge \overset{(k)}{\cdots} \wedge \Omega)$ es una función en $M$ con valores reales.
+
+	Para esta construcción, consideremos el conjunto $S^k(\gg)$ de todas las aplicaciones multilineales simétricas de la forma
+	\begin{align*}
+	  f :\gg \times \overset{(k)}{\cdots} \times \gg &\longrightarrow \RR.
+	  \end{align*}
+	  Por otra parte, decimos que una función $F:\gg \rightarrow \RR$ es un \emph{polinomio homogéneo de grado $k$ en $\gg$} si, fijado un isomorfismo $\gg \rightarrow \RR^m$, con $m=\dim \gg$, entonces el polinomio $F(\xx^1,\dots,\xx^m)$ que hace el siguiente diagrama conmutativo
+	  \begin{center}
+	    \begin{tikzcd}
+\gg	      \arrow{r}{F}\arrow{rd} & \RR \\ 
+&\RR^m \arrow{u}[anchor=west]{F(\xx^1,\dots,\xx^m)}
+	     \end{tikzcd}
+	   \end{center}
+	   es un polinomio homogéneo de grado $k$, $F(\xx^1,\dots,\xx^m)\in \RR[\xx^1,\dots,\xx^n]_k$. Denotamos por $\RR[\gg]_k$ al conjunto de los polinomios homogéneos de grado $k$ en $\gg$. Hay una biyección entre $S^k(\gg)$ y $\RR[\gg]_k$ que a cada $f\in S^k(\gg)$ le asocia el polinomio homogéneo $F_f(\xi)=f(\xi,\dots,\xi)$ y a cada $P\in \RR[\gg]_k$ una función multilineal simétrica $f_F$, su \emph{polarización}:
+	   \begin{equation*}
+	     f_F(\xi_1,\dots,\xi_k)=\frac{1}{k!}\sum_{i=1}^k (-1)^{k-i}\sum_{\substack{j_1+\cdots+j_k=i \\ j_\alpha\in \left\{ 0,1 \right\}}} F(j_i\xi_1+\cdots j_k \xi_k).
+	   \end{equation*}
+	   En conjunto, hemos obtenido una biyección entre $S(\gg)=\bigoplus_kS^k(\gg)$ y $\RR[\gg]=\bigoplus_k \RR[\gg]_k$.
+
+	   Como la curvatura toma valores en el fibrado adjunto $\ad\ P$, nos restringimos a aquellas funciones simétricas que sean invariantes respecto de la acción adjunta. Denotamos $I^k(\gg)\subset S^k(\gg)$ al conjunto de las aplicaciones multilineales simétricas tales que
+	   \begin{equation*}
+	     f(\ad_g \xi_1,\dots,\ad_g \xi_k)=f(\xi_1,\dots,\xi_k)
+	   \end{equation*}
+	   para cualquier $g\in G$. Una aplicación $f$ de esta forma (o su correspondiente en $\RR[\gg]$ se llama un \emph{polinomio invariante}.
+
+	   \begin{thm}[Construcción de Weil de las clases características]
+	     Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$, $\omega$ una $1$-forma de conexión en $P$ con curvatura $\Omega$ y $f\in I^k(\gg)$. La $2k$-forma $f( \Omega\wedge \overset{(k)}{\cdots} \wedge \Omega)$ en $P$ definida por
+	     \begin{equation*}
+	       f(\Omega\wedge \overset{(k)}{\cdots} \wedge \Omega)(Y_1,\dots,Y_{2k})=\frac{1}{2k!}\sum_{\sigma \mathfrak{S}_{2k}}(-1)^{\sigma}f(\Omega(Y_{\sigma(1)},Y_{\sigma(2)}),\dots,\Omega(Y_{\sigma(2k-1)},Y_{\sigma(2k)}))
+	     \end{equation*}
+	     tiene las siguientes propiedades:
+	     \begin{enumerate}
+	       \item[$(1)$] Se puede proyectar (es la pullback por $p$ de una $2k$-forma en $B$).
+	       \item[$(2)$]Es cerrada.
+	       \item[$(3)$] La clase de cohomología de su proyección en $B$ no depende de la elección de la conexión $\omega$. Esta clase se llama la \emph{clase característica del fibrado $P\rightarrow B$ asociada a $f$}.
+	     \end{enumerate}
+	   \end{thm}
+	   \begin{proof}
+	Para probar $(1)$, vamos a dar explícitamente una forma en $B$ cuya pullback por $p$ es $f( \Omega\wedge \overset{(k)}{\cdots} \wedge \Omega)$. Dada $f\in I^k(\gg)$, definimos la aplicación
+	\begin{align*}
+	  \tilde{f} :\ad\ P \times \cdots \times \ad\ P&\longrightarrow \RR\\ 
+	  ([(y,\xi_1)],\dots,[(y,\xi_k)]) &\longmapsto f(\xi_1,\dots,\xi_k), 
+	  \end{align*}
+	  que está bien definida ya que 
+	  \begin{equation*}
+	    \tilde{f}([(yg,\ad_{g^{-1}}\xi_1)],\dots,[(yg,\ad_{g^{-1}}\xi_k)])=f(\ad_{g^{-1}}\xi_1,\dots,\ad_{g^{-1}}\xi_k)=f(\xi_1,\dots,\xi_k).
+	  \end{equation*}
+	  Esto permite definir una $2$-forma $\tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega})$ en $B$ como
+	  \begin{equation*}
+	    \tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega})(X_1,\dots,X_{2k})=\frac{1}{2k!}\sum_{\sigma \in \mathfrak{S}_{2k}}(-1)^{\sigma} \tilde{f}(\tilde{\Omega}(X_{\sigma(1)},X_{\sigma(2)}),\dots,\tilde{\Omega}(X_{\sigma(2k-1)},X_{\sigma(2k)})).
+	  \end{equation*}
+	  Ahora, si consideramos los campos $Y_i \in \mathfrak{X}(P)$ y denotamos $X_i=p_*X_i$, entonces la pullback de la forma construida es
+	  \begin{align*}
+	    p^*(\tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega}))(Y_1,\dots,Y_{2k})&=\frac{1}{2k!}\tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega})(p_*Y_1,\dots,p_*Y_{2k})\\&=\frac{1}{2k!}\sum_{\sigma \in \mathfrak{S}_{2k}}(-1)^{\sigma} \tilde{f}(\tilde{\Omega}(X_{\sigma(1)},X_{\sigma(2)}),\dots,\tilde{\Omega}(X_{\sigma(2k-1)},X_{\sigma(2k)}))\\
+	    &=\frac{1}{2k!}\sum_{\sigma \in \mathfrak{S}_{2k}}(-1)^{\sigma} f(\Omega(Y_{\sigma(1)},Y_{\sigma(2)}),\dots,\Omega(Y_{\sigma(2k-1)},Y_{\sigma(2k)}))\\
+	    &= f(\Omega \wedge \overset{(k)}{\cdots} \wedge \Omega)(Y_1,\dots,Y_{2k}).
+	  \end{align*}
+	  
+	  Para probar $(2)$ basta notar que por definición $f(\Omega \wedge \overset{(k)}{\cdots} \wedge \Omega)$ se anula en los vectores verticales, luego $df(\Omega \wedge \overset{(k)}{\cdots} \wedge \Omega)=D_\omega f(\Omega \wedge \overset{(k)}{\cdots} \wedge \Omega)$, ahora, por la identidad de Bianchi:
+	  \begin{align*}
+	    D_\omega f(\Omega \wedge \overset{(k)}{\cdots} \wedge \Omega)
+	    =f(D_\omega\Omega \wedge \Omega \wedge \overset{(k)}{\cdots} \wedge \Omega)+\cdots+f(\Omega \wedge \Omega \wedge \overset{(k)}{\cdots} \wedge D_\omega \Omega)=0.
+	  \end{align*}
+
+	  Finalmente, vamos a probar $(3)$. Sean $\omega_0$ y $\omega_1$ dos $1$-formas de conexión en $P$ y denotemos $\alpha=\omega_1-\omega_0 \in \Omega^1(P,\gg)$. Podemos considerar la familia uniparamétrica de conexiones $\omega_t=\omega_0+t\alpha$, con curvaturas
+	  \begin{equation*}
+	    \Omega_t=d\omega_t + [\omega_t,\omega_t]=d\omega_0 + td\alpha + [\omega_0+t\alpha,\omega_0+t\alpha].
+	  \end{equation*}
+	  En particular,
+	  \begin{equation*}
+	    \frac{d}{dt}\Omega_t=d\alpha + [\alpha,\omega_t]+[\omega_t,\alpha]=D_{\omega_t}\alpha.
+	  \end{equation*}
+
+Queremos ver que $f(\Omega_1 \wedge \overset{(k)}{\cdots} \wedge \Omega_1)-f(\Omega_0 \wedge \overset{(k)}{\cdots} \wedge \Omega_0)=dh$ para cierta forma $h$, que queremos hallar. Vamos a construir esta $h$ como
+\begin{equation*}
+  h=k\int_0^1 f(\alpha \wedge \Omega_t \wedge \overset{(k-1)}{\cdots} \wedge \Omega_t) dt.
+\end{equation*}
+En efecto,
+\begin{align*}
+  dh =&k\int_{0}^1 df(\alpha\wedge \Omega_t \wedge \overset{(k-1)}{\cdots} \wedge \Omega_t)dt=k\int_{0}^1 D_{\omega_t}f(\alpha\wedge \Omega_t \wedge \overset{(k-1)}{\cdots} \wedge \Omega_t)dt \\
+  =& k\int_{0}^1 f(D_{\omega_t}\alpha\wedge \Omega_t \wedge \overset{(k-1)}{\cdots} \wedge \Omega_t)dt+k\int_{0}^1 f(\alpha\wedge D_{\omega_t}\Omega_t \wedge \overset{(k-1)}{\cdots} \wedge \Omega_t)dt\\ &+k\int_{0}^1 f(\alpha\wedge \Omega_t \wedge \overset{(k-1)}{\cdots} \wedge D_{\omega_t}\Omega_t)dt
+  = k\int_0^1 f\left( \frac{d\Omega_t}{dt} \wedge \Omega_t \wedge \overset{(k-1)}{\cdots} \wedge \Omega_t \right)dt\\
+  =& \int_{0}^1 \frac{d}{dt} f(\Omega_t\wedge \overset{(k)}{\cdots} \wedge \Omega_t)dt = f(\Omega_1\wedge \overset{(k)}{\cdots} \wedge \Omega_1)-f(\Omega_0\wedge \overset{(k)}{\cdots} \wedge \Omega_0)
+\end{align*}
+  
+De aquí concluimos que $[\tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega})]\in H^{2k}(B,\RR)$ no depende de la elección de la conexión, como queríamos probar.
+  \end{proof}
+	   \begin{obs}
+	     La construcción es exactamente igual si tomamos polinomios complejos, de modo que obtendríamos una clase característica en $H^{2k}(B,\CC)$.
+	   \end{obs}
+
+	   \begin{ejemplo}
+	     Consideremos un fibrado principal $P\rightarrow B$ con fibra $\mathrm{GL}(n,\RR)$. El álgebra de Lie de la fibra es $\mathfrak{gl}(n,\RR)=\mathfrak{M}_n(\RR)$ el conjunto de las matrices $n\times n$ con coeficientes reales. Se puede probar que el conjunto de los polinomios invariantes está generado por los polinomios $\left\{ p_1,\dots,p_n \right\}$ definidos por
+	     \begin{equation*}
+	       \det(\lambda I-A)=\lambda^n+p_1(A)\lambda^{n-1}+\cdots+p_{n-1}(A)\lambda + p_n(A),
+	     \end{equation*}
+	     para $A\in \mathfrak{M}_n(\RR)$.
+
+	     Análogamente, si consideramos el grupo $\mathrm{GL}(n,\RR)$, el conjunto de los polinomios invariantes está generado por los polinomios $\left\{ p_1,\dots,p_n \right\}$ definidos por
+	     \begin{equation*}
+	       \det(\lambda I+iA)=\lambda^n+p_1(A)\lambda^{n-1}+\cdots+p_{n-1}(A)\lambda + p_n(A).
+	     \end{equation*}
+	     Las clases características $c_k$ asociadas a cada uno de los polinomios $\frac{1}{(2\pi)^k}p_k$ se denominan las \emph{clases de Chern} del fibrado $P$.
+	     \qed
+	   \end{ejemplo}
+	  
+	   \begin{ejemplo}
+	     Consideremos la esfera $\SF^2$, $U_N$ y $U_S$ los hemisferios norte y sur, respectivamente y el fibrado principal con fibra $U(1)$ definido por una función de transición
+	     \begin{align*}
+	       \psi :U_N\cap U_S&\longrightarrow U(1) .
+	       \end{align*}
+	       Nótese que $U_N\cap U_S$ es el ecuador de la esfera mientras que $U(1)\cong \SF^1$, de modo que podemos ver la función de transición como una aplicación $\psi:\SF^1 \rightarrow \SF^1$. Las aplicaciones $\SF^1\rightarrow \SF^1$ están determinadas salvo homotopía por su grado $k\in \ZZ$, y podemos tomar como representante de cada clase de homotopía la función $2\pi$-periódica $\psi(\phi)= k\phi$. Así, para cada grado $k$ tenemos un fibrado principal distinto $P_k\rightarrow \SF^2$. Como $U(1)$ es abeliano, la acción adjunta es trivial y todos los polinomios son invariantes, de modo que escogemos el polinomio $p(\xx)=\frac{1}{2\pi}\xx$. Consideramos la conexión $A$ definida localmente como
+	       \begin{itemize}
+		 \item en $U_N$, $A_N=0$,
+		 \item en $U_N\cap U_S$,  $A_S=\psi A_N + \psi d\psi=\psi d\psi$ (que es la forma de Maurer-Cartan en la intersección) y lo extendemos de cualquier manera a todo $U_S$.
+	       \end{itemize}
+	       Ahora, como $U(1)$ es abeliano, la curvatura vendrá dada por $F=dA+[A,A]=dA$, de modo que $p(F)=\frac{1}{2\pi}dA$ y
+	       \begin{align*}
+		 \int_{\SF^2} p(\Omega)&=\frac{1}{2\pi} \int_{U_N}dA_N+\frac{1}{2\pi}\int_{U_S}dA_S=\frac{1}{2\pi}\int_{U_S}dA_S\\ &=\frac{1}{2\pi}\int_{U_N\cap U_S}A_S|_{U_N\cap U_S}=\frac{1}{2\pi}\int_{U_N\cap U_S}\psi d\psi= \frac{1}{2\pi} \int_0^{2\pi} k\phi d\phi = k.
+	       \end{align*}
+	       Tenemos entonces que la primera clase de Chern $c_1$ clasifica los fibrados principales con fibra $U(1)$.
+	   \end{ejemplo}
+
+	   \section{El campo electromagnético}
+Para concluir el trabajo, veamos un caso donde los fibrados principales se pueden aplicar a la Física: el campo electromagnético. La teoría de los fibrados principales nos permite entender el campo electromagnético como un fibrado principal de fibra $U(1)$ (el grupo de transformaciones gauge del electromagnetismo) sobre el espacio-tiempo de Minkowski $\RR^4$. En este caso, el fibrado es siempre el trivial $P=\RR^4\times U(1)$. Podemos dar la conexión en el fibrado como un campo gauge $A\in \Omega(\RR^4,i\RR)$, donde estamos pensando en $i\RR$ como el álgebra de Lie de $U(1)$, en virtud de la asignación $i\phi \mapsto e^{i\phi}$. Es decir la conexión es de la forma $A=iA_{\mu}dx^{\mu}$ (a partir de aquí usamos el convenio de índices repetidos). La curvatura vendrá dada por la fuerza del campo $F=dA$ con componentes
+	   \begin{equation*}
+	     iF_{\mu\nu}=i\left( \frac{\partial A_\nu}{\partial x^\mu}-\frac{\partial A_\mu}{\partial x^\nu} \right).
+	   \end{equation*}
+	   La identidad de Bianchi da
+	   \begin{equation*}
+	     dF=0,
+	   \end{equation*}
+	   que en componentes es
+	   \begin{equation*}
+	     \partial_\lambda F_{\mu\nu}+\partial_\nu F_{\lambda\mu}+\partial_\mu F_{\nu\lambda}=0.
+	   \end{equation*}
+	   Identificando las componentes $F_{\mu\nu}$ con los campos eléctrico $\ve{E}$ y magnético $\ve{B}$ en la forma $E_i=F_{i0}$, $B_i=\frac{1}{2}\epsilon_{ijk}F_{jk}$, la igualdad anterior se reduce a las ecuaciones
+	   \begin{equation*}
+	     \nabla \times \ve{E}+ \frac{\partial \ve{B}}{\partial t}=0,\  \ \ \nabla \cdot \ve{B}=0.
+	   \end{equation*}
+	   Estas dos ecuaciones son el par «estático» de las ecuaciones de Maxwell, ya que, como hemos visto, vienen impuestas directamente por la estructura geométrica del espacio-tiempo, sin necesidad de tener en cuenta consideraciones dinámicas. El otro par de ecuaciones de Maxwell puede obtenerse también en el contexto de los fibrados principales e irán asociadas a una conexión específica, la que minimiza la acción de Yang-Mills.
+
+	   De momento hemos considerado el campo electromagnético en el espacio-tiempo de Minkowski, que es topológicamente trivial, pero podemos considerar espacios base más exóticos. Es el caso, por ejemplo, del \emph{monopolo magnético} de carga magnética $g$ en el origen $\RR^3$, cuyo campo magnético es
+	   \begin{equation*}
+	     \ve{B}(\ve{x})=g\frac{\ve{x}}{\norm{\ve{x}}^3},
+	   \end{equation*}
+	   definido en $\RR^3-\left\{ 0 \right\}$. Es inmediato comprobar que, en efecto, $\nabla \cdot \ve{B} =0$, de modo que, en $\RR^3-\left\{ 0 \right\}$, $\ve{B}$ es una solución de las ecuaciones de Maxwell. De acuerdo con la correspondencia anterior, podemos ver el campo magnético como la forma 
+	   \begin{equation*}
+	     F=i\frac{g}{\norm{\ve{x}}^3}(x^1 dx^2\wedge dx^3-x^2 dx^1\wedge dx^3 + x^3 dx^1 \wedge dx^2).
+	   \end{equation*}
+	   De nuevo, volvemos a introducir la $i$ para ver $F$ como una forma con coeficientes en el álgebra de Lie de $U(1)$.
+	   Más aún, como $\RR^3-\left\{ 0 \right\}$ es homotópicamente equivalente a la esfera $\SF^2$, podemos restringirnos simplemente a estudiar lo que pasa en la esfera unidad y estudiar ahí el campo $F$. Volvemos entonces al caso de estudiar fibrados principales con fibra $U(1)$ sobre $\SF^2$.
+
+	   En coordenadas esféricas en la esfera, $F$ se expresa simplemente como
+	   \begin{equation*}
+	     F=ig\sin \theta d\theta \wedge d\phi.
+	   \end{equation*}
+	   Sabemos que el segundo grupo de cohomología de de Rham $H^2(\SF^2,\RR)$ es no nulo, así que en principio no cabe esperar un a $1$-forma $A$ tal que $F=dA$. Sin embargo, sí que podemos encontrar estas formas localmente: en cada hemisferio $U_N$, $U_S$, definimos
+	   \begin{equation*}
+	     A_N=ig(1-\cos \theta)d\phi \ \ \ A_S=-ig(1+\cos \theta) d\phi.
+	   \end{equation*}
+	   Ahora, una función de transición $U_N\cap U_S \rightarrow U(1)$ puede verse simplemente como una función de la forma
+	   \begin{align*}
+	     \psi :\SF^1&\longrightarrow \SF^1\\ 
+	     \phi &\longmapsto e^{i\varphi(\phi)},
+	     \end{align*}
+	     con $\varphi:\SF^1\rightarrow \RR$.
+	     Los potenciales han de relacionarse ahora en la forma
+	     \begin{equation*}
+	       A_N=\psi^{-1}A_S\psi +\psi^{-1}d\psi=A_S+id\varphi.
+	     \end{equation*}
+	     Por tanto
+	     \begin{equation*}
+	       d\varphi = -i(A_N - A_S)=2g d\phi.
+	     \end{equation*}
+	     Ahora, podemos hallar el período de $\varphi$,
+	     \begin{equation*}
+	       \Delta \varphi = \int d\varphi = \int_{0}^{2\pi} 2g d\phi = 4\pi g.
+	     \end{equation*}
+	     Como $\varphi$ ha de ser $2\pi$-periódica, tenemos que 
+	     \begin{equation*}
+	       2g=\frac{\Delta \varphi}{2\pi}
+	     \end{equation*}
+	     ha de ser un número entero. Este resultado es lo que en Física se conoce como la \emph{condición de cuantización de Dirac}: las cargas magnéticas deben ser semienteras.
+
+
 \end{document}
 
 
