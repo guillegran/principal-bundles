@@ -14,8 +14,11 @@
 \usepackage{tikz,tikz-cd}
 \usetikzlibrary{arrows, babel}
 \usepackage{url}
-\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue]{hyperref}
+\urlstyle{rm}
+\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue,urlcolor=blue]{hyperref}
 \usepackage{graphicx}
+\usepackage[tocflat]{tocstyle}
+\usepackage{tocbibind}
 
 %Fuente Palatino:
 %\usepackage[sc]{mathpazo}
@@ -68,7 +71,84 @@
 
 \begin{document}
 \maketitle
+\begin{abstract}
+  En este trabajo introducimos la teoría de \textit{fibrados}, centrándonos particularmente en los \textit{fibrados principales}. Definimos las ideas de \textit{curvatura} y \textit{conexión} en un fibrado principal. Finalmente, usamos todas las herramientas expuestas para demostrar la construcción de Weil de las clases características. Se añade también un breve apéndice donde se relaciona la teoría de los fibrados principales con ciertas ideas físicas.
+\end{abstract}
+
+\tableofcontents
+
 \section{Preliminares}
+\subsection*{Grupos de Lie}
+\begin{defn}
+  Un \emph{grupo de Lie} $G$ es
+  \begin{itemize}
+    \item un grupo, y
+    \item una variedad diferenciable tal que la operación del grupo,
+      \begin{align*}
+	\cdot :G\times G&\longrightarrow G\\ 
+	  (g,h) &\longmapsto gh, 
+	\end{align*}
+	y la aplicación que consiste en invertir,
+	\begin{align*}
+	   G&\longrightarrow G\\ 
+	   g &\longmapsto g^{-1}, 
+	  \end{align*}
+	  son aplicaciones diferenciables.
+  \end{itemize}
+
+  Para cada punto $g\in G$ definimos los difeomorfismos
+  \begin{align*}
+    L_g :G&\longrightarrow G\\ 
+      x &\longmapsto gx 
+    \end{align*}
+    y
+    \begin{align*}
+      R_g :G&\longrightarrow G\\ 
+        x &\longmapsto xg 
+      \end{align*}
+      llamados \emph{multiplicación por la izquierda y por la derecha}, respectivamente.
+\end{defn}
+\begin{defn}
+  Un campo vectorial $\xi\in \mathfrak{X}(G)$ se dice \emph{invariante por la izquierda} si $$(L_{g})_* \xi_{g'}=\xi_{gg'}$$ para cualesquiera $g,g'\in G$. El corchete de Lie de dos campos invariantes por la izquierda es invariante por la izquierda, de modo que los campos invariantes por la izquierda forman un álgebra de Lie, que se denomina el \emph{álgebra de Lie de $G$} y se denota por $\gg$. Un campo invariante por la izquierda está completamente determinado por su valor en el elemento neutro $1_G$, de modo que $\gg \cong T_{1_G}G$. 
+
+  Se llama la \emph{forma de Maurer-Cartan} a la $1$-forma $\theta\in \Omega^1(G;\gg)$ en $G$ con valores en $\gg$ definida por
+  \begin{equation*}
+    \theta_g=(L_{g^{-1}})_*:T_gG \rightarrow T_{1_G}G\cong \gg.
+  \end{equation*}
+\end{defn}
+
+La teoría básica de los grupos de Lie nos dice que todos los campos del álgebra de Lie de un grupo de Lie $G$ son completos, de forma que hay una correspondencia biunívoca entre los elementos de $\gg$ y los subgrupos uniparamétricos de $G$. Si tenemos un campo $\xi\in \gg$ y un elemento $g \in G$ éste genera una curva integral en $G$ con punto inicial $x$ que denotaremos por $\gamma^\xi_g(t)$ . Si fijamos $g=1_G$, podemos distinguir un elemento concreto $\gamma^\xi_{1_G}(1)$. Esto nos permite dar la siguiente definición:
+\begin{defn}
+  Se define la \emph{aplicación exponencial} de $G$ como la aplicación
+  \begin{align*}
+    \exp :\gg&\longrightarrow G\\ 
+    \xi &\longmapsto \gamma^\xi_{1_G}(1).
+    \end{align*}
+\end{defn}
+Así, el subgrupo uniparamétrico generado por un elemento $\xi \in \gg$ es exactamente $\exp(t\xi)$.
+
+Para cada $g\in G$ tenemos una aplicación diferenciable $\mathrm{Ad}_g=L_g\circ R_g^{-1}:G\rightarrow G$, esto es, $\mathrm{Ad}_gh=ghg^{-1}$. Esta aplicación define una representación lineal del grupo en el álgebra de Lie 
+\begin{align*}
+  \ad :G&\longrightarrow \mathrm{Aut}(\gg)\\ 
+  g &\longmapsto (\mathrm{Ad}_g)_*, 
+  \end{align*}
+conocida como la \emph{representación adjunta}. Explícitamente
+\begin{equation*}
+  \ad_g \xi = \left. \frac{d}{dt} \right|_{t=0} (g\exp(t\xi)g^{-1}).
+\end{equation*} 
+Nótese que $R_g^*\theta=\ad_{g^{-1}}\circ \theta$.
+
+\subsection*{Distribuciones e integrabilidad}
+\begin{defn}
+  Sea $M$ una variedad diferenciable de dimensión $n$. Una \emph{distribución}, que denotamos por $D\subset TM$, es una elección en cada punto $x\in M$, diferenciable en $x$, de un subespacio vectorial de dimensión $k<n$, $D_x\subset T_xM$.
+
+  Sea $D\subset TM$ una distribución. Una subvariedad $N\subset M$ se llama una \emph{variedad integral} de $D$ si $T_xN=D_x$ en cada punto $x\in N$. Si cada punto de $M$ está contenido en una variedad integral de $D$, entonces decimos que la distribución $D$ es \emph{integrable}.
+\end{defn}
+
+El resultado clave en la teoría de distribuciones es el siguiente:
+\begin{thm}[Frobenius]
+  Una distribución $D\subset TM$ es integrable si y sólo si dados dos campos $X,Y$ en un entorno abierto $U\subset TM$ tales que $X_x, Y_x \in D_x$, para todo $x\in U$, entonces también $[X,Y]_x \in D_x$ para todo $x\in U$.
+\end{thm}
 \section{Fibrados}
 \begin{defn}
   Un \emph{fibrado} $(E,B,p,F)$ consta de:
@@ -76,7 +156,7 @@
     \item un espacio topológico $B$ llamado la \emph{base} del fibrado,
     \item un espacio topológico $E$ llamado el \emph{espacio total} del fibrado,
     \item un espacio topológico $F$ llamado la \emph{fibra} del fibrado,
-    \item una aplicación continua $p:E\rightarrow B$ tal que, para cada punto $x\in B$ existe un entorno abierto $U$ de $x$ y un homeomorfismo $\varphi_U:p^{-1}(U) \rightarrow U \times F$, llamado \emph{trivialización}, tal que el siguiente diagrama conmuta
+    \item una aplicación continua $p:E\rightarrow B$ tal que para cada punto $x\in B$ existe un entorno abierto $U$ de $x$ y un homeomorfismo $\varphi_U:p^{-1}(U) \rightarrow U \times F$, llamado \emph{trivialización}, tal que el siguiente diagrama conmuta
       \begin{center}
 	\begin{tikzcd}
 	  p^{-1}(U) \arrow{rr}{\varphi_U}\arrow{rd}{p} && U \times F \arrow{ld}{\pr_1}	  \\ 
@@ -127,7 +207,7 @@
 	    \begin{equation*}
 	      g_{UW}=g_{VW}\circ g_{UV}.
 	    \end{equation*}
-	    En particular $g_{UU}=\id$ y $g_{UV}=g_{VU}^{-1}$.
+	    En particular, $g_{UU}=\id$ y $g_{UV}=g_{VU}^{-1}$.
 
 	    Las funciones de transición nos permiten distinguir distintos tipos de fibrados. Es decir, si los elementos que constituyen el fibrado pertenecen a cierta categoría geométrica (por ejemplo, la de las variedades diferenciables) y las funciones de transición son isomorfismos en esa categoría (por ejemplo, difeomorfismos), el fibrado será de un tipo especial, relacionado con esa categoría (por ejemplo, un fibrado diferenciable). Un caso particularmente interesante es el siguiente:
 	    \begin{defn}
@@ -142,7 +222,63 @@
 		y al evaluarlas en un punto $g_{UW}(x)$ se llaman \emph{matrices de transición}.
 	    \end{defn}
 
-	    [\emph{Funciones de transición determinan el fibrado}]
+	    Lo que recalca aún más la importancia de las funciones de transición es que se puede recuperar el fibrado a partir de estas. En efecto, si $B$ y $F$ son espacios topológicos, $G<\mathrm{Homeo}(F)$ es un subgrupo del grupo de homeomorfismos de $F$ y $\mathcal{U}$ es un recubrimiento abierto de $B$, decimos que un conjunto de funciones de la forma
+	    \begin{equation*}
+	      \left\{ g_{UV}:U\cap V\rightarrow G:U,V \in \mathcal{U} \right\}
+	    \end{equation*}
+	    es un \emph{$1$-cociclo de \v{C}ech subordinado a $\mathcal{U}$ con coeficientes en $G$} si cumple la condición de cociclo
+	    \begin{equation*}
+	      g_{UW}=g_{VW}\circ g_{UV},
+	    \end{equation*}
+	    para $U,V,W\in \mathcal{U}$. A partir de un $1$-cociclo de \v{C}ech podemos construir un fibrado $E\rightarrow B$ cuyas funciones de transición en los abiertos de $\mathcal{U}$ son precisamente las del cociclo, de la siguiente manera:
+	    \begin{itemize}
+	      \item El espacio total es 
+		\begin{equation*}
+		  E=\bigsqcup_{U\in \mathcal{U}}(U\times F)/\sim,
+		\end{equation*}
+		con la relación de equivalencia $(x,y)\sim (x,g_{UV}(x)(y))$, con $x\in U\cap V$. 
+	      \item La aplicación $p:E\rightarrow B$ es simplemente la proyección al primer factor $p:[(x,y)]\mapsto x$. 
+	    \end{itemize}
+
+	    Cabe preguntarse ahora cuándo dos $1$-cociclos de \v{C}ech en un recubrimiento $\mathcal{U}$ generarán el mismo fibrado. Para ello, es necesario concretar qué entendemos por «ser el mismo fibrado»:
+	    \begin{defn}
+	      Sean $p:E\rightarrow B$ y $p':E'\rightarrow B'$ dos fibrados con fibra $F$. Un \emph{isomorfismo de fibrados} entre $p:E\rightarrow B$ y $p':E'\rightarrow B$ es un par de homeomorfismos $(f,\tilde{f})$, $f:B'\rightarrow B$ y $\tilde{f}:E'\rightarrow E$ tal que el siguiente diagrama conmuta
+	      \begin{center}
+		\begin{tikzcd}
+		  E'\arrow{r}{\tilde{f}}\arrow{d}{p'} & E\arrow{d}{p}		  \\ 
+		  B' \arrow{r}{f} & B.
+		\end{tikzcd}
+	      \end{center}
+	    \end{defn}
+
+	    Si consideramos dos fibrados $p:E\rightarrow B$ y $p':E'\rightarrow B'$, un isomorfismo $(f,\tilde{f})$ entre ellos y tomamos dos trivializaciones $\varphi_{U'}:p'^{-1}(U')\rightarrow U'\times F$ y $\varphi_U:p^{-1}(U)\rightarrow U\times F$, tenemos una aplicación
+	    \begin{align*}
+	      \tilde{f}_{UU'}= \varphi_U\circ \tilde{f} \circ \varphi_{U'}^{-1} :U'\times F&\longrightarrow U\times F\\ 
+	      (x',y') &\longmapsto (f(x'),\hat{f}_{UU',x}(y')), 
+	      \end{align*}
+	      con $\hat{f}_{UU',x'}:F\rightarrow F$ un homeomorfismo. Tenemos entonces una aplicación 
+	      \begin{align*}
+		f_{UU'} :U'&\longrightarrow \mathrm{Homeo}(F)\\ 
+		x' &\longmapsto \tilde{f}_{UU',x'}. 
+		\end{align*}
+		Ahora, si consideramos otras dos trivializaciones $\varphi_{V'}:p'^{-1}(V')\rightarrow V'\times F$ y $\varphi_V:p^{-1}(V)\rightarrow V\times F$, entonces $\tilde{f}_{VV'}=\varphi_V\circ \tilde{f} \circ \varphi_V^{-1}$, de modo que tenemos la relación
+		\begin{equation*}
+		  \tilde{f}_{VV'}=\varphi_V\circ \varphi_U^{-1} \tilde{f}_{UU'}\varphi_{U'}\varphi_{V'}^{-1}.
+		\end{equation*}
+		Por tanto, 
+		\begin{equation*}
+		  f_{VV'}=g_{UV}\circ f_{UU'}\circ g'_{V'U'},
+		\end{equation*}
+		de donde
+		\begin{equation*}
+		  g'_{U'V'}=f_{VV'}^{-1}\circ g_{UV}\circ f_{UU'}.
+		\end{equation*}
+		Esta última igualdad nos permite establecer una relación de equivalencia en los $1$-cociclos de un recubrimiento $\mathcal{U}$ con coeficientes en $G<\mathrm{Homeo}(F)$. El cociente que resulta de esta relación de equivalencia se llama \emph{primer grupo de cohomología de \v{C}ech subordinado a $\mathcal{U}$ con coeficientes en $G$} y se denota por $\check{H}^1(\mathcal{U},G)$. Se puede ver que el refinamiento del recubrimiento $\mathcal{U}$ induce homomorfismos en los grupos de cohomología de \v{C}ech, de modo que se puede considerar el límite directo
+		\begin{equation*}
+		  \check{H}^1(B,G)=\varinjlim_{\mathcal{U}}\check{H}^1(\mathcal{U},G).
+		\end{equation*}
+		Este grupo se denomina \emph{primer grupo de cohomología de \v{C}ech con coeficientes en $G$} y, como hemos visto, clasifica los fibrados con fibra $F$.
+	    
 
 	    \begin{defn}
 	      Sea $E\rightarrow B$ un fibrado. Una \emph{sección} del fibrado es una aplicación continua $s:B\rightarrow E$ tal que $p\circ s = \id_B$. Denotamos $\Gamma(E)$ al conjunto de las secciones del fibrado $E\rightarrow B$ y $\Gamma(U,E)$ a las secciones locales definidas en un abierto $U\subset E$.
@@ -232,22 +368,6 @@
 		  \end{ejemplo}
 
 		  \begin{ejemplo}
-		    \emph{PENSARLO BIEN}
-		    Sea $P=\SF^3\subset \CC^2$ y $\SF^1\subset \CC$. Consideremos la acción de $\SF^1$ sobre $\SF^3$:
-		    \begin{align*}
-		       \SF^3 \times \SF^1&\longrightarrow \SF^3\\ 
-		       \left( (z_1,z_2),e^{i\phi} \right) &\longmapsto (z_1e^{i\phi},z_2e^{i\phi}). 
-		      \end{align*}
-		      Esta acción nos da la \emph{fibración de Hopf}:
-		      \begin{align*}
-			p :\SF^3&\longrightarrow \SF^2\\ 
-			(z_1,z_2) &\longmapsto (|z_1|^2-|z_2|^2,2z_1\bar{z_2}), 
-			\end{align*}
-			y podemos ver $p:\SF^3\rightarrow \SF^2$.
-			\qed
-		  \end{ejemplo}
-
-		  \begin{ejemplo}
 		    El ejemplo más importante que vamos a considerar en esta sección es el de \emph{fibrado de referencias}. Sea $M$ una variedad diferenciable, el fibrado de referencias está dado por el conjunto
 		    \begin{equation*}
 		      L(M)=\left\{ \mathcal{B}_x: x\in M,\  \mathcal{B}_x \text{ es una base de } T_xM \right\},
@@ -282,11 +402,11 @@
 			\qed   
 		  \end{ejemplo}
       \section{Conexiones en fibrados principales}
-      La idea de una conexión en geometría viene de un problema más intuitivo, el del \emph{transporte paralelo}. Supongamos que tenemos un fibrado $E\rightarrow B$ y una curva $\gamma:[0,1]\rightarrow B$. La necesidad de un transporte paralelo se ve evidente a la hora de «derivar» secciones. Es decir, dada una sección $s:B\rightarrow E$, queremos definir su derivada a lo largo de la curva $\gamma$. Para hacer esto necesitamos dar una noción de cociente incremental
+      La idea de una conexión en geometría viene de un problema muy intuitivo, el del \emph{transporte paralelo}. Supongamos que tenemos un fibrado $E\rightarrow B$ y una curva $\gamma:[0,1]\rightarrow B$. La necesidad de un transporte paralelo se ve evidente a la hora de «derivar» secciones. Es decir, dada una sección $s:B\rightarrow E$, queremos definir su derivada a lo largo de la curva $\gamma$. Para hacer esto necesitamos dar una noción de cociente incremental
       \begin{equation*}
 	\Delta s= \frac{s(\gamma(t+h))-s(\gamma(t))}{h}.
       \end{equation*}
-      Sin embargo, si $\gamma(t+h)$ y $\gamma(t)$ son puntos distintos, sus secciones estarán en fibras distintas y la fórmula anterior es absurda, pues pretendemos restar dos vectores que se encuentran en espacios vectoriales distintos. Es por ello que queremos «conectar» las distintas fibras, de modo que la operación anterior tenga sentido. Una forma de conectar las fibras es considerar el fibrado tangente del espacio total. Si tomamos un punto $x\in B$ y un punto $y\in F_x$, entre los vectores tangentes a $E$ en $y$ habrá algunos que sean también tangentes a la fibra, que llamaremos «verticales». Los que nos permiten conectar la fibra $F_x$ con otras distintas son precisamente aquellos que no son verticales, y será en esos en los que centraremos nuestro interés. En un fibrado en general se obtiene la noción de \emph{conexión de Ehresmann}, nosotros sólo consideraremos conexiones en fibrados principales.
+      Sin embargo, si $\gamma(t+h)$ y $\gamma(t)$ son puntos distintos, sus secciones estarán en fibras distintas y la fórmula anterior es absurda, pues pretendemos restar dos vectores que se encuentran en espacios vectoriales distintos. Es por ello que queremos «conectar» las distintas fibras, de modo que la operación anterior tenga sentido. Una forma de conectar las fibras es considerar el fibrado tangente del espacio total. Si tomamos un punto $x\in B$ y un punto $y\in F_x$, entre los vectores tangentes a $E$ en $y$ habrá algunos que sean también tangentes a la fibra, que llamaremos «verticales». Los que nos permiten conectar la fibra $F_x$ con otras distintas son precisamente aquellos que no son verticales, y será en esos en los que centraremos nuestro interés. En un fibrado en general se obtiene la noción de \emph{conexión de Ehresmann}; nosotros sólo consideraremos conexiones en fibrados principales.
 
       Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$. Sea $x\in B$ e $y\in F_x$. Se define el \emph{subespacio vertical} como $V_y=\ker p_* \subset T_yY$. Un campo vectorial $X$ en $P$ se dice \emph{vertical} si $X_y\in V_y$ para cada $y\in P$. El corchete de Lie de dos campos verticales es vertical. Además, como si consideramos un elemento $g\in G$ y la acción 
       \begin{align*}
@@ -374,10 +494,6 @@
 	\begin{equation*}
 	  A_U=s_U^*\omega_U=s_U^*\omega_V=s_U^*(\ad_{g_V(s_U)^{-1}}\circ p^* A_V + g_V^*\theta)= \ad_{g_{UV}}\circ A_V + g_{VU}^*\theta.
 	\end{equation*}
-	Para grupos de matrices, esta fórmula adquiere una expresión más manejable:
-	\begin{equation*}
-	  A_U=g_{UV}A_Vg_{UV}^{-1} - dg_{UV} g_{UV}^{-1}.
-	\end{equation*}
 
 	Para cerrar la sección, vamos a ver cómo es posible obtener una noción de transporte paralelo a partir de una conexión. En primer lugar, consideremos $p:P\rightarrow B$ un fibrado principal con una conexión $H\subset TP$ y tomemos $x\in B$ e $y\in F_x$. Como $p_*:T_yP \rightarrow T_xB$ es sobreyectiva y su núcleo es precisamente $V_y$, tenemos que a cada vector $X_x\in T_xB$ le podemos asignar un único vector horizontal $X_y^h\in H_y$ tal que $p^*(X_y^h) =X_x$. Este nuevo vector se denomina el \emph{levantamiento horizontal} de $X_x$. 
 	\begin{prop}
@@ -393,7 +509,7 @@
 	  \begin{center}
 	    \begin{tikzcd}
 \gamma^*P	      \arrow{r}{\Phi}\arrow{d}[anchor=east]{p'} & P\arrow{d}[anchor=west]{p} \\ 
-\left[0,1\right] \arrow{r}[anchor=south]{\alpha} & B
+\left[0,1\right] \arrow{r}[anchor=south]{\gamma} & B
 	     \end{tikzcd}
 	   \end{center}
 	   y el pullback de la $1$-forma de conexión, $\Phi^*\omega$, que a su vez nos da una conexión en $\gamma^*P$. Consideramos el levantamiento horizontal $\frac{\partial}{\partial t}^h$ con respecto a $\Phi^*\omega$ y lo integramos, de modo que existe una única curva horizontal $\eta:[0,1]\rightarrow \gamma^*P$ con $\eta(0)=\Phi^{-1}(y)$. Como esta curva es horizontal, $\gamma^h=\Phi \circ \eta$ es también horizontal y $\gamma^h(0)=y$ por construcción.
@@ -483,10 +599,6 @@
 	\begin{equation*}
 	  F_U=\ad_{g_{UV}}\circ F_V.
 	\end{equation*}
-	Para grupos de matrices, esta fórmula tiene el aspecto
-	\begin{equation*}
-	  F_U=g_{UV}F_Vg_{UV}^{-1}.
-	\end{equation*}
 	    
 		  \section{Fibrados asociados}
 Supongamos un grupo de Lie $G$ que actúa diferenciablemente en una variedad diferenciable $F$ por la izquierda y consideremos un fibrado principal $p:P\rightarrow B$ con fibra $G$.
@@ -544,6 +656,8 @@ Veamos que esta definición da un fibrado con fibra $F$. Las trivializaciones de
       \begin{align*}
 	[(y\cdot g,\Omega_{y\cdot g}(X^h_{y\cdot g},Y^h_{y\cdot g})]&=[(y\cdot g, (R^*_g\Omega)_y(X^h_y,Y^h_y))]\\ &=[(y\cdot g,\ad_{g^{-1}}(\Omega_y(X_y^h,Y_y^h)))]\\&=[(y,\Omega_y(X^h_y,Y^h_y))].
       \end{align*}
+
+      La otra gran ventaja de pensar en fibrados asociados es que éstos nos permiten vislumbrar la generalidad de los fibrados principales (de ahí su nombre). Sea $E\rightarrow B$ un fibrado con fibra $F$ y cuyas funciones de transición forman un grupo de Lie $G<\mathrm{Homeo}(F)$. Podemos definir un fibrado principal con fibra $G$ como sigue. Consideramos un recubrimiento $\mathcal{U}$ de $B$ por entornos trivializantes y consideramos el fibrado principal con fibra $G$ generado por este recubrimiento y las funciones de transición $g_{UV}\in G$ del fibrado original. Denotamos este fibrado como $P(E)$ y se puede comprobar que $E$ es isomorfo precisamente a $P(E)\times_G F$.
 
 	\section{Clases características}
 	La idea fundamental que motiva la introducción de las clases características surge del teorema de Gauss-Bonnet. Recordemos que este teorema nos dice que si $(M,g)$ es una superficie riemanniana conexa, orientada y compacta, entonces
@@ -675,7 +789,8 @@ De aquí concluimos que $[\tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega})]\in H^{
 	       Tenemos entonces que la primera clase de Chern $c_1$ clasifica los fibrados principales con fibra $U(1)$.
 	   \end{ejemplo}
 
-	   \section{El campo electromagnético}
+	   \appendix
+	   \section{Una aplicación física: El campo electromagnético}
 Para concluir el trabajo, veamos un caso donde los fibrados principales se pueden aplicar a la Física: el campo electromagnético. La teoría de los fibrados principales nos permite entender el campo electromagnético como un fibrado principal de fibra $U(1)$ (el grupo de transformaciones gauge del electromagnetismo) sobre el espacio-tiempo de Minkowski $\RR^4$. En este caso, el fibrado es siempre el trivial $P=\RR^4\times U(1)$. Podemos dar la conexión en el fibrado como un campo gauge $A\in \Omega(\RR^4,i\RR)$, donde estamos pensando en $i\RR$ como el álgebra de Lie de $U(1)$, en virtud de la asignación $i\phi \mapsto e^{i\phi}$. Es decir la conexión es de la forma $A=iA_{\mu}dx^{\mu}$ (a partir de aquí usamos el convenio de índices repetidos). La curvatura vendrá dada por la fuerza del campo $F=dA$ con componentes
 	   \begin{equation*}
 	     iF_{\mu\nu}=i\left( \frac{\partial A_\nu}{\partial x^\mu}-\frac{\partial A_\mu}{\partial x^\nu} \right).
@@ -709,7 +824,7 @@ Para concluir el trabajo, veamos un caso donde los fibrados principales se puede
 	   \begin{equation*}
 	     F=ig\sin \theta d\theta \wedge d\phi.
 	   \end{equation*}
-	   Sabemos que el segundo grupo de cohomología de de Rham $H^2(\SF^2,\RR)$ es no nulo, así que en principio no cabe esperar un a $1$-forma $A$ tal que $F=dA$. Sin embargo, sí que podemos encontrar estas formas localmente: en cada hemisferio $U_N$, $U_S$, definimos
+	   Sabemos que el segundo grupo de cohomología de de Rham $H^2(\SF^2;\RR)$ es no nulo, así que en principio no cabe esperar un a $1$-forma $A$ tal que $F=dA$. Sin embargo, sí que podemos encontrar estas formas localmente: en cada hemisferio $U_N$, $U_S$, definimos
 	   \begin{equation*}
 	     A_N=ig(1-\cos \theta)d\phi \ \ \ A_S=-ig(1+\cos \theta) d\phi.
 	   \end{equation*}
@@ -737,6 +852,9 @@ Para concluir el trabajo, veamos un caso donde los fibrados principales se puede
 	     \end{equation*}
 	     ha de ser un número entero. Este resultado es lo que en Física se conoce como la \emph{condición de cuantización de Dirac}: las cargas magnéticas deben ser semienteras.
 
+	     \nocite{*}
+	     \bibliographystyle{plain}
+	     \bibliography{biblio}
 
 \end{document}
 

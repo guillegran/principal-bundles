@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.28)  9 DEC 2018 01:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.28)  9 DEC 2018 20:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -947,7 +947,28 @@ File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \c@bookmark@seq@number=\count137
 \Hy@SectionHShift=\skip53
 )
-(/usr/share/texlive/texmf-dist/tex/latex/libertine/libertine.sty
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/tocstyle.sty
+Package: tocstyle 2013/08/11 v0.2e-alpha KOMA-Script package (versatile toc sty
+les)
+
+
+Package tocstyle Warning: THIS IS AN ALPHA VERSION!
+(tocstyle)                USAGE OF THIS VERSION IS ON YOUR OWN RISK!
+(tocstyle)                EVERYTHING MAY HAPPEN!
+(tocstyle)                EVERYTHING MAY CHANGE IN FUTURE!
+(tocstyle)                THERE IS NO SUPPORT, IF YOU USE THIS PACKAGE!
+(tocstyle)                Maybe it would be better, not to load this package.
+
+\tocstyle@indentstyle=\count138
+Package tocstyle Info: no tocstyle.cfg found on input line 856.
+) (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/libertine/libertine.sty
 Package: libertine 2014/11/25 (Bob Tennent) Supports Libertine and Biolinum fon
 ts for all LaTeX engines.
 
@@ -959,7 +980,7 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 \XKV@toks=\toks42
 \XKV@tempa@toks=\toks43
 )
-\XKV@depth=\count138
+\XKV@depth=\count139
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
@@ -1145,7 +1166,7 @@ Package: newtxmath 2016/01/31 v1.465
 
 `newtxmath' v1.465, 2016/01/31 Math macros based on txfonts (msharpe)
 (/usr/share/texlive/texmf-dist/tex/generic/kastrup/binhex.tex)
-\tx@Isdigit=\count139
+\tx@Isdigit=\count140
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 137.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/LinuxLibertineT-TLF/m/n on input li
@@ -1240,65 +1261,65 @@ LaTeX Info: Redefining \not on input line 1749.
 LaTeX Info: Redefining \textsquare on input line 1770.
 LaTeX Info: Redefining \openbox on input line 1772.
 )
-\c@thm=\count140
-\c@lema=\count141
+\c@thm=\count141
+\c@lema=\count142
  (./fibrados.aux
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 )
 \openout1 = `fibrados.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 69.
-LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 69
+LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 72.
+LaTeX Font Info:    Try loading font information for OML+nxlmi on input line 72
 .
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 69.
-LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 69
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/ntxsy/m/n on input line 72.
+LaTeX Font Info:    Try loading font information for OMS+ntxsy on input line 72
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/omsntxsy.fd
 File: omsntxsy.fd 2012/11/14 Fontinst v1.933 font definitions for OMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 69.
-LaTeX Font Info:    Try loading font information for U+ntxexa on input line 69.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 72.
+LaTeX Font Info:    Try loading font information for U+ntxexa on input line 72.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 69.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 72.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineT-TLF on
- input line 69.
+ input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineT-TLF.fd
 File: OT1LinuxLibertineT-TLF.fd 2012/11/26 (autoinst) Font definitions for OT1/
 LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 69.
-LaTeX Info: Redefining \. on input line 69.
-LaTeX Info: Redefining \% on input line 69.
+(Font)              scaled to size 12.0pt on input line 72.
+LaTeX Info: Redefining \. on input line 72.
+LaTeX Info: Redefining \% on input line 72.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1337,16 +1358,16 @@ LaTeX Info: Redefining \% on input line 69.
 ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count142
+\scratchcounter=\count143
 \scratchdimen=\dimen187
 \scratchbox=\box39
-\nofMPsegments=\count143
-\nofMParguments=\count144
+\nofMPsegments=\count144
+\nofMParguments=\count145
 \everyMPshowfont=\toks44
-\MPscratchCnt=\count145
+\MPscratchCnt=\count146
 \MPscratchDim=\dimen188
-\MPnumerator=\count146
-\makeMPintoPDFobject=\count147
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
 \everyMPtoPDFconversion=\toks45
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -1364,7 +1385,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box40
-Package hyperref Info: Link coloring ON on input line 69.
+Package hyperref Info: Link coloring ON on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1372,80 +1393,182 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count148
+\c@section@level=\count149
 )
-LaTeX Info: Redefining \ref on input line 69.
-LaTeX Info: Redefining \pageref on input line 69.
-LaTeX Info: Redefining \nameref on input line 69.
+LaTeX Info: Redefining \ref on input line 72.
+LaTeX Info: Redefining \pageref on input line 72.
+LaTeX Info: Redefining \nameref on input line 72.
 
 (./fibrados.out) (./fibrados.out)
 \@outlinefile=\write4
 \openout4 = `fibrados.out'.
 
-\c@mv@tabular=\count149
-\c@mv@boldtabular=\count150
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 20.74pt on input line 71.
+(Font)              scaled to size 14.4pt on input line 72.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/bx/n' in size <14.4> no
+t available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/b/n' tried instead on i
+nput line 72.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 20.74pt on input line 71.
+(Font)              scaled to size 14.4pt on input line 72.
+Package tocstyle Info: prepare \l@part for redefinition on input line 72.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/bx/n' in size <12> not 
+available
+(Font)              Font shape `OT1/LinuxLibertineT-TLF/b/n' tried instead on i
+nput line 72.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 12.0pt on input line 72.
+Package tocstyle Info: prepare \l@section for redefinition on input line 72.
+Package tocstyle Info: prepare \l@subsection for redefinition on input line 72.
+
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 71.
+(Font)              scaled to size 8.8pt on input line 72.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.5pt on input line 71.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 7.9pt on input line 71.
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
+(Font)              scaled to size 6.6pt on input line 72.
+LaTeX Font Info:    Try loading font information for U+msa on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 72.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+ntxmia on input line 71.
+LaTeX Font Info:    Try loading font information for U+ntxmia on input line 72.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsym on input line 71.
+LaTeX Font Info:    Try loading font information for U+ntxsym on input line 72.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 71.
+LaTeX Font Info:    Try loading font information for U+ntxsyc on input line 72.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
+Package tocstyle Info: prepare \l@subsubsection for redefinition on input line 
+72.
+Package tocstyle Info: prepare \l@table for redefinition on input line 72.
+Package tocstyle Info: prepare \l@figure for redefinition on input line 72.
+\c@mv@tabular=\count150
+\c@mv@boldtabular=\count151
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 71.
+(Font)              scaled to size 20.74pt on input line 74.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 71.
+(Font)              scaled to size 20.74pt on input line 74.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.5pt on input line 74.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 7.9pt on input line 74.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 10.95pt on input line 74.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 74.
+(Font)              scaled to size 10.95pt on input line 74.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 12.0pt on input line 74.
+(Font)              scaled to size 10.95pt on input line 75.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
+(Font)              scaled to size 17.28pt on input line 78.
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 17.28pt on input line 78.
+ (./fibrados.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+number indent by \l@... (toc, 1):  0.0pt
+text indent by \l@... (toc, 1):  18.0pt
+number indent by parent (toc, 1):  0.0pt
+text indent calculated (toc, 1): 14.34pt
+number indent calculated (toc, 1): 0.0pt
+text noindent (toc, 1): 14.34pt
+number noindent (toc, 1): 0.0pt
+)
+\tf@toc=\write5
+\openout5 = `fibrados.toc'.
+
+LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 12.0pt on input line 83.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 12.0pt on input line 74.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 8.8pt on input line 74.
-LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 74.
+(Font)              scaled to size 12.0pt on input line 83.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-LaTeX Font Info:    Try loading font information for U+lasy on input line 285.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 243.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [5] [6] [7] [8]
-[9] [10]
-Overfull \hbox (6.68883pt too wide) in paragraph at lines 506--507
+[9] [10] [11] [12] [13]
+Overfull \hbox (6.68883pt too wide) in paragraph at lines 618--619
 []\OT1/LinuxLibertineT-TLF/m/n/12 Veamos que es-ta de-fi-ni-ci[]on da un fi-bra
 -do con fi-bra $\OML/nxlmi/m/it/12 F$\OT1/LinuxLibertineT-TLF/m/n/12 . Las tri-
 via-li-za-cio-nes de $\OML/nxlmi/m/it/12 P$\OT1/LinuxLibertineT-TLF/m/n/12 , $\
@@ -1454,14 +1577,14 @@ U/ntxmia/m/it/12 {\OML/nxlmi/m/it/12 U\U/ntxmia/m/it/12 | \OMS/ntxsy/m/n/12 !
  []
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 12.0pt on input line 532.
+(Font)              scaled to size 12.0pt on input line 644.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 8.8pt on input line 532.
+(Font)              scaled to size 8.8pt on input line 644.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.6pt on input line 532.
-[11]
+(Font)              scaled to size 6.6pt on input line 644.
+[14]
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TL
-F on input line 561.
+F on input line 675.
 
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.f
 d
@@ -1469,38 +1592,45 @@ File: OT1LinuxLibertineMonoT-TLF.fd 2012/12/06 (autoinst) Font definitions for
 OT1/LinuxLibertineMonoT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 561.
+(Font)              scaled to size 12.0pt on input line 675.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 8.8pt on input line 561.
+(Font)              scaled to size 8.8pt on input line 675.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 561.
- [12] [13] [14] [15] [16] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 741.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 741.
- (./fibrados.aux
+(Font)              scaled to size 6.6pt on input line 675.
+ [15] [16] [17] [18] [19] (./fibrados.bbl (./fibrados.brf)
+\tf@brf=\write6
+\openout6 = `fibrados.brf'.
+
+) [20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 859.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 859.
+
+(./fibrados.aux
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 741.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 741.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 859.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 859.
 Package rerunfilecheck Info: File `fibrados.out' has not changed.
-(rerunfilecheck)             Checksum: 05E42B96F456A2058597BFEA071E4FE6;482.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 741.
+(rerunfilecheck)             Checksum: B3BCA311C5367527D5D6FD3A5C67089D;609.
+Package rerunfilecheck Info: File `fibrados.brf' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 859.
  ) 
 Here is how much of TeX's memory you used:
- 22446 strings out of 494850
- 420668 string characters out of 6178023
- 469564 words of memory out of 5000000
- 25206 multiletter control sequences out of 15000+600000
- 67037 words of font info for 157 fonts, out of 8000000 for 9000
+ 22809 strings out of 494850
+ 427914 string characters out of 6178023
+ 478604 words of memory out of 5000000
+ 25531 multiletter control sequences out of 15000+600000
+ 73660 words of font info for 165 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 56i,14n,84p,980b,1078s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,14n,84p,980b,1077s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/newtx/libertinealt.enc}{/usr/s
 hare/texlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_4jqvtd.enc}{/usr/share/t
 exlive/texmf-dist/fonts/enc/dvips/libertine/lbtn_ehpgim.enc}{/usr/share/texlive
-/texmf-dist/fonts/enc/dvips/libertine/lbtn_xogrpz.enc}{/usr/share/texlive/texmf
--dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
-s/libertine/lbtn_zajy4r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libe
+/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texlive/texmf-dist/fonts/en
+c/dvips/libertine/lbtn_zajy4r.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvip
+s/libertine/lbtn_xogrpz.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libe
 rtine/lbtn_c7kyj5.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/libertine/
 lbtn_lu7m2n.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/libertine/Lin
 LibertineMT.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/libertine/Lin
@@ -1520,10 +1650,10 @@ s/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on fibrados.pdf (17 pages, 590785 bytes).
+Output written on fibrados.pdf (20 pages, 606029 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 295 PDF objects out of 1000 (max. 8388607)
+ 251 compressed objects within 3 object streams
+ 69 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

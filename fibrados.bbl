@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{marcovicente}
+M.~Castrillón and V.~Muñoz.
+\newblock ``{B}undles", 2011.
+\newblock Lecture notes at Universidad Complutense de Madrid.
+
+\bibitem{figueroa}
+J.~M. Figueroa-O'Farrill.
+\newblock ``{G}auge {T}heory".
+\newblock Online at \url{https://empg.maths.ed.ac.uk/Activities/GT/}, 2006.
+\newblock Lecture notes at University of Edinburgh.
+
+\bibitem{kobayashi1963foundations}
+S.~Kobayashi and K.~Nomizu.
+\newblock {\em Foundations of differential geometry}, volume~2.
+\newblock Interscience Publishers New York, 1963.
+
+\bibitem{lee2003smooth}
+J.~M. Lee.
+\newblock {\em Introduction to Smooth Manifolds}.
+\newblock Springer, 2003.
+
+\bibitem{nakahara2003geometry}
+M.~Nakahara.
+\newblock {\em Geometry, topology and physics}.
+\newblock CRC Press, 2003.
+
+\end{thebibliography}
