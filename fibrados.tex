@@ -342,7 +342,42 @@
 	\end{defn}
 	Recíprocamente, una $1$-forma de estas características induce automáticamente la conexión $H=\ker \omega$.
 
-	[\emph{Conexiones como pegado de secciones locales}]
+	Hay otra forma de pensar, más «física», que nos permite ver las conexiones como formas sobre el espacio base $B$ de un fibrado principal $p:P\rightarrow B$, en vez de sobre el espacio total $P$. Supongamos que $\mathcal{U}$ es un recubrimiento de $B$ por abiertos trivializantes y consideremos una familia de secciones locales $\left\{ s_U:U\rightarrow p^{-1}(U):U\in \mathcal{U} \right\}$. Si tenemos una $1$-forma de conexión $\omega \in \Omega(P;\gg)$ podemos considerar las pullback de $\omega$ por las secciones locales, lo que da una familia de $1$-formas en $B$ con valores en $\gg$: 
+	\begin{equation*}
+	  \left\{ A_U=s_U^*\omega \in \Omega^1(U;\gg): U\in \mathcal{U} \right\}.
+	\end{equation*}
+	Estas $1$-formas se suelen denominar un \emph{campo gauge} en $B$.
+
+	\begin{prop}
+	  La restricción de la $1$-forma de conexión $\omega$ a $p^{-1}(U)$, para un abierto trivializante $U$, es igual a
+	  \begin{equation*}
+	    \omega_U=\ad_{g_U^{-1}}\circ p^*A_U+ g_U^*\theta,
+	  \end{equation*}
+	  con $\theta$ la $1$-forma de Maurer-Cartan.
+	\end{prop}
+	\begin{proof}
+	  En primer lugar vamos a ver que la igualdad se cumple en la imagen de la sección $s_U$. En efecto, si $x\in U$ e $y=s_U(x)$, podemos descomponer
+	  \begin{equation*}
+	    T_yP=\im(s_U\circ p)_* \oplus V_y,
+	  \end{equation*}
+	  de modo que cada $Y_y\in T_yP$ puede escribirse de forma única como $Y_y=(s_U)_*p_*(Y_y)+Y_y^v$, para cierto vector vertical $Y_y^v\in V_y$. Ahora, como $g_U(s_U(x))=1_G$, tenemos
+	  \begin{align*}
+	    \omega_U(Y)&=(p^*s_U^*\omega)(Y)+(g_U^*\theta_{1_G})(Y)=\omega(s_{U,*}p_* Y) + \theta_{1_G}(g_{U,*}Y)\\ &=\omega(s_{U,*}p_* Y) + \theta_{1_G}(g_{U,*}Y^v)=\omega(s_{U,*}p_* Y) + \omega(Y^v)=\omega(Y).
+	  \end{align*}
+	  Veamos ahora que ambos términos se transforman igual bajo la acción por la derecha de $G$:
+	  \begin{align*}
+	    R_g^*(\omega_U)_{y\cdot g}&=\ad_{g_U (y\cdot g)^{-1}}\circ R_g^*p^*s_U^*\omega+R_g^*g_U^*\theta=\ad_{(g_U (y)g)^{-1}}\circ R_g^*p^*s_U^*\omega+g_U^*R_g^*\theta\\&=\ad_{g^{-1}g_U (y)^{-1}}\circ p^*s_U^*\omega+g_U^*(\ad_{g^{-1}}\circ\theta)=\ad_{g^{-1}}\circ(ad_{g_U(y)^{-1}}\circ p^*s_U^*\omega+g_U^*\theta)\\&=\ad_{g^{-1}}\circ (\omega_U)_y.
+	  \end{align*}
+	  Por tanto, la igualdad se cumple en todo $p^{-1}(U)$.
+	\end{proof}
+	Ahora, como $\omega$ está definida globalmente, tenemos que $\omega_U=\omega_V$ en $p^{-1}(U\cap V)$. Esto nos permite obtener una relación entre $A_U$ y $A_V$ en $U\cap V$:
+	\begin{equation*}
+	  A_U=s_U^*\omega_U=s_U^*\omega_V=s_U^*(\ad_{g_V(s_U)^{-1}}\circ p^* A_V + g_V^*\theta)= \ad_{g_{UV}}\circ A_V + g_{VU}^*\theta.
+	\end{equation*}
+	Para grupos de matrices, esta fórmula adquiere una expresión más manejable:
+	\begin{equation*}
+	  A_U=g_{UV}A_Vg_{UV}^{-1} - dg_{UV} g_{UV}^{-1}.
+	\end{equation*}
 
 	Para cerrar la sección, vamos a ver cómo es posible obtener una noción de transporte paralelo a partir de una conexión. En primer lugar, consideremos $p:P\rightarrow B$ un fibrado principal con una conexión $H\subset TP$ y tomemos $x\in B$ e $y\in F_x$. Como $p_*:T_yP \rightarrow T_xB$ es sobreyectiva y su núcleo es precisamente $V_y$, tenemos que a cada vector $X_x\in T_xB$ le podemos asignar un único vector horizontal $X_y^h\in H_y$ tal que $p^*(X_y^h) =X_x$. Este nuevo vector se denomina el \emph{levantamiento horizontal} de $X_x$. 
 	\begin{prop}
@@ -435,6 +470,23 @@
 	  \end{equation*}
 	  de modo que $d\omega(Y^h,Z^h,W^h)=0$ porque $\omega$ se anula en los vectores horizontales.
 	\end{proof}
+
+	Igual que hacíamos con las conexiones, podemos ver la curvatura de una conexión como una colección de $2$-formas sobre el espacio base $B$. Así, si $\mathcal{U}$ es un recubrimiento de $B$ por abiertos trivializantes y consideramos una familia de secciones locales $\left\{ s_U:U\rightarrow p^{-1}(U):U\in \mathcal{U} \right\}$, definimos la \emph{fuerza de campo gauge} como la familia
+	\begin{equation*}
+	  \left\{ F_U=s_U^* \Omega \in \Omega^2(U; \gg):U\in \mathcal{U} \right\}.
+	\end{equation*}
+	De la ecuación de estructura tenemos
+	\begin{equation*}
+	  F_U=dA_U+ [A_U,A_U].
+	\end{equation*}
+	Además, en las intersecciones $U\cap V$ la fuerza de campo gauge cambia como 
+	\begin{equation*}
+	  F_U=\ad_{g_{UV}}\circ F_V.
+	\end{equation*}
+	Para grupos de matrices, esta fórmula tiene el aspecto
+	\begin{equation*}
+	  F_U=g_{UV}F_Vg_{UV}^{-1}.
+	\end{equation*}
 	    
 		  \section{Fibrados asociados}
 Supongamos un grupo de Lie $G$ que actúa diferenciablemente en una variedad diferenciable $F$ por la izquierda y consideremos un fibrado principal $p:P\rightarrow B$ con fibra $G$.
@@ -611,12 +663,12 @@ De aquí concluimos que $[\tilde{f}(\tilde{\Omega},\dots,\tilde{\Omega})]\in H^{
 	     \begin{align*}
 	       \psi :U_N\cap U_S&\longrightarrow U(1) .
 	       \end{align*}
-	       Nótese que $U_N\cap U_S$ es el ecuador de la esfera mientras que $U(1)\cong \SF^1$, de modo que podemos ver la función de transición como una aplicación $\psi:\SF^1 \rightarrow \SF^1$. Las aplicaciones $\SF^1\rightarrow \SF^1$ están determinadas salvo homotopía por su grado $k\in \ZZ$, y podemos tomar como representante de cada clase de homotopía la función $2\pi$-periódica $\psi(\phi)= k\phi$. Así, para cada grado $k$ tenemos un fibrado principal distinto $P_k\rightarrow \SF^2$. Como $U(1)$ es abeliano, la acción adjunta es trivial y todos los polinomios son invariantes, de modo que escogemos el polinomio $p(\xx)=\frac{1}{2\pi}\xx$. Consideramos la conexión $A$ definida localmente como
+	       Nótese que $U_N\cap U_S$ es el ecuador de la esfera mientras que $U(1)\cong \SF^1$, de modo que podemos ver la función de transición como una aplicación $\psi:\SF^1 \rightarrow \SF^1$. Las aplicaciones $\SF^1\rightarrow \SF^1$ están determinadas salvo homotopía por su grado $k\in \ZZ$, y podemos tomar como representante de cada clase de homotopía la función $2\pi$-periódica $\psi(\phi)= k\phi$. Así, para cada grado $k$ tenemos un fibrado principal distinto $P_k\rightarrow \SF^2$. Como $U(1)$ es abeliano, la acción adjunta es trivial y todos los polinomios son invariantes, de modo que escogemos el polinomio $p(\xx)=\frac{1}{2\pi}\xx$. Consideramos la conexión definida por un campo gauge $A$ de la forma:
 	       \begin{itemize}
 		 \item en $U_N$, $A_N=0$,
 		 \item en $U_N\cap U_S$,  $A_S=\psi A_N + \psi d\psi=\psi d\psi$ (que es la forma de Maurer-Cartan en la intersección) y lo extendemos de cualquier manera a todo $U_S$.
 	       \end{itemize}
-	       Ahora, como $U(1)$ es abeliano, la curvatura vendrá dada por $F=dA+[A,A]=dA$, de modo que $p(F)=\frac{1}{2\pi}dA$ y
+	       La curvatura vendrá dada por la fuerza de campo gauge $F=dA+[A,A]=dA$, donde hemos usado que $U(1)$ es abeliano. Por tanto, $p(F)=\frac{1}{2\pi}dA$ y
 	       \begin{align*}
 		 \int_{\SF^2} p(\Omega)&=\frac{1}{2\pi} \int_{U_N}dA_N+\frac{1}{2\pi}\int_{U_S}dA_S=\frac{1}{2\pi}\int_{U_S}dA_S\\ &=\frac{1}{2\pi}\int_{U_N\cap U_S}A_S|_{U_N\cap U_S}=\frac{1}{2\pi}\int_{U_N\cap U_S}\psi d\psi= \frac{1}{2\pi} \int_0^{2\pi} k\phi d\phi = k.
 	       \end{align*}
