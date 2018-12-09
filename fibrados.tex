@@ -117,7 +117,7 @@
   \end{equation*}
 \end{defn}
 
-La teoría básica de los grupos de Lie nos dice que todos los campos del álgebra de Lie de un grupo de Lie $G$ son completos, de forma que hay una correspondencia biunívoca entre los elementos de $\gg$ y los subgrupos uniparamétricos de $G$. Si tenemos un campo $\xi\in \gg$ y un elemento $g \in G$ éste genera una curva integral en $G$ con punto inicial $x$ que denotaremos por $\gamma^\xi_g(t)$ . Si fijamos $g=1_G$, podemos distinguir un elemento concreto $\gamma^\xi_{1_G}(1)$. Esto nos permite dar la siguiente definición:
+La teoría básica de los grupos de Lie nos dice que todos los campos del álgebra de Lie de un grupo de Lie $G$ son completos, de forma que hay una correspondencia biunívoca entre los elementos de $\gg$ y los subgrupos uniparamétricos de $G$. Si tenemos un campo $\xi\in \gg$ y un elemento $g \in G$, éste genera una curva integral en $G$ con punto inicial $g$ que denotaremos por $\gamma^\xi_g(t)$ . Si fijamos $g=1_G$, podemos distinguir un elemento concreto $\gamma^\xi_{1_G}(1)$. Esto nos permite dar la siguiente definición:
 \begin{defn}
   Se define la \emph{aplicación exponencial} de $G$ como la aplicación
   \begin{align*}
@@ -147,7 +147,7 @@ Nótese que $R_g^*\theta=\ad_{g^{-1}}\circ \theta$.
 
 El resultado clave en la teoría de distribuciones es el siguiente:
 \begin{thm}[Frobenius]
-  Una distribución $D\subset TM$ es integrable si y sólo si dados dos campos $X,Y$ en un entorno abierto $U\subset TM$ tales que $X_x, Y_x \in D_x$, para todo $x\in U$, entonces también $[X,Y]_x \in D_x$ para todo $x\in U$.
+  Una distribución $D\subset TM$ es integrable si y sólo si dados dos campos $X,Y$ en un entorno abierto $U\subset TM$ tales que $X_x, Y_x \in D_x$ para todo $x\in U$, entonces también $[X,Y]_x \in D_x$ para todo $x\in U$.
 \end{thm}
 \section{Fibrados}
 \begin{defn}
@@ -222,7 +222,7 @@ El resultado clave en la teoría de distribuciones es el siguiente:
 		y al evaluarlas en un punto $g_{UW}(x)$ se llaman \emph{matrices de transición}.
 	    \end{defn}
 
-	    Lo que recalca aún más la importancia de las funciones de transición es que se puede recuperar el fibrado a partir de estas. En efecto, si $B$ y $F$ son espacios topológicos, $G<\mathrm{Homeo}(F)$ es un subgrupo del grupo de homeomorfismos de $F$ y $\mathcal{U}$ es un recubrimiento abierto de $B$, decimos que un conjunto de funciones de la forma
+	    Lo que recalca aún más la importancia de las funciones de transición es que se puede recuperar el fibrado a partir de éstas. En efecto, si $B$ y $F$ son espacios topológicos, $G<\mathrm{Homeo}(F)$ es un subgrupo del grupo de homeomorfismos de $F$ y $\mathcal{U}$ es un recubrimiento abierto de $B$, decimos que un conjunto de funciones de la forma
 	    \begin{equation*}
 	      \left\{ g_{UV}:U\cap V\rightarrow G:U,V \in \mathcal{U} \right\}
 	    \end{equation*}
@@ -408,7 +408,7 @@ El resultado clave en la teoría de distribuciones es el siguiente:
       \end{equation*}
       Sin embargo, si $\gamma(t+h)$ y $\gamma(t)$ son puntos distintos, sus secciones estarán en fibras distintas y la fórmula anterior es absurda, pues pretendemos restar dos vectores que se encuentran en espacios vectoriales distintos. Es por ello que queremos «conectar» las distintas fibras, de modo que la operación anterior tenga sentido. Una forma de conectar las fibras es considerar el fibrado tangente del espacio total. Si tomamos un punto $x\in B$ y un punto $y\in F_x$, entre los vectores tangentes a $E$ en $y$ habrá algunos que sean también tangentes a la fibra, que llamaremos «verticales». Los que nos permiten conectar la fibra $F_x$ con otras distintas son precisamente aquellos que no son verticales, y será en esos en los que centraremos nuestro interés. En un fibrado en general se obtiene la noción de \emph{conexión de Ehresmann}; nosotros sólo consideraremos conexiones en fibrados principales.
 
-      Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$. Sea $x\in B$ e $y\in F_x$. Se define el \emph{subespacio vertical} como $V_y=\ker p_* \subset T_yY$. Un campo vectorial $X$ en $P$ se dice \emph{vertical} si $X_y\in V_y$ para cada $y\in P$. El corchete de Lie de dos campos verticales es vertical. Además, como si consideramos un elemento $g\in G$ y la acción 
+      Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$. Sea $x\in B$ e $y\in F_x$. Se define el \emph{subespacio vertical} como $V_y=\ker p_* \subset T_yY$. Un campo vectorial $X$ en $P$ se dice \emph{vertical} si $X_y\in V_y$ para cada $y\in P$. El corchete de Lie de dos campos verticales es vertical. Además, si consideramos un elemento $g\in G$ y la acción 
       \begin{align*}
 	 R_g:P&\longrightarrow P\\ 
 	  y &\longmapsto y\cdot g, 
@@ -450,11 +450,11 @@ El resultado clave en la teoría de distribuciones es el siguiente:
 	  \begin{prop}
 	    La $1$-forma de conexión cumple
 	    \begin{equation*}
-	      R^*_g\omega=\ad_{g^-1}\circ \omega.
+	      R^*_g\omega=\ad_{g^{-1}}\circ \omega.
 	    \end{equation*}
 	  \end{prop}
 	  \begin{proof}
-	    Sea un vector $Y_y\in H_y$, de modo $\omega(Y_y)=0$. Por la $G$-invariancia de $H$, $R_{g,*}Y_y\in H_{y\cdot g}$, luego $R_g^* \omega(Y_y)=0$ y se satisface trivialmente la igualdad. Por otro lado, si $Y_y=\sigma_y(\xi)$ para cierto $\xi \in \gg$, entonces
+	    Sea un vector $Y_y\in H_y$, de modo que $\omega(Y_y)=0$. Por la $G$-invariancia de $H$, $R_{g,*}Y_y\in H_{y\cdot g}$, luego $R_g^* \omega(Y_y)=0$ y se satisface trivialmente la igualdad. Por otro lado, si $Y_y=\sigma_y(\xi)$ para cierto $\xi \in \gg$, entonces
 	    \begin{equation*}
 	      R_g^*\omega(\sigma(\xi))=\omega(R_{g,*}\sigma(\xi))=\omega(\sigma(\ad_{g^-1}\xi))=\ad_{g^{-1}}\xi.
 	    \end{equation*}
@@ -689,7 +689,7 @@ Veamos que esta definición da un fibrado con fibra $F$. Las trivializaciones de
 	   \begin{equation*}
 	     f(\ad_g \xi_1,\dots,\ad_g \xi_k)=f(\xi_1,\dots,\xi_k)
 	   \end{equation*}
-	   para cualquier $g\in G$. Una aplicación $f$ de esta forma (o su correspondiente en $\RR[\gg]$ se llama un \emph{polinomio invariante}.
+	   para cualquier $g\in G$. Una aplicación $f$ de esta forma (o su correspondiente en $\RR[\gg]$) se llama un \emph{polinomio invariante}.
 
 	   \begin{thm}[Construcción de Weil de las clases características]
 	     Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$, $\omega$ una $1$-forma de conexión en $P$ con curvatura $\Omega$ y $f\in I^k(\gg)$. La $2k$-forma $f( \Omega\wedge \overset{(k)}{\cdots} \wedge \Omega)$ en $P$ definida por
@@ -824,7 +824,7 @@ Para concluir el trabajo, veamos un caso donde los fibrados principales se puede
 	   \begin{equation*}
 	     F=ig\sin \theta d\theta \wedge d\phi.
 	   \end{equation*}
-	   Sabemos que el segundo grupo de cohomología de de Rham $H^2(\SF^2;\RR)$ es no nulo, así que en principio no cabe esperar un a $1$-forma $A$ tal que $F=dA$. Sin embargo, sí que podemos encontrar estas formas localmente: en cada hemisferio $U_N$, $U_S$, definimos
+	   Sabemos que el segundo grupo de cohomología de de Rham $H^2(\SF^2;\RR)$ es no nulo, así que en principio no cabe esperar una $1$-forma $A$ tal que $F=dA$. Sin embargo, sí que podemos encontrar estas formas localmente: en cada hemisferio $U_N$, $U_S$, definimos
 	   \begin{equation*}
 	     A_N=ig(1-\cos \theta)d\phi \ \ \ A_S=-ig(1+\cos \theta) d\phi.
 	   \end{equation*}
