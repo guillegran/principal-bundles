@@ -1,5 +1,6 @@
-\documentclass[mathserif]{beamer}
-%\documentclass[aspectratio=169,mathserif]{beamer}
+%\documentclass[mathserif]{beamer}
+\documentclass{beamer}
+%\documentclass[aspectratio=169]{beamer}
 \beamertemplatenavigationsymbolsempty
 
 \usepackage[utf8]{inputenc}
@@ -9,17 +10,21 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm, mathtools}
-\usepackage{mathrsfs}
+%\usepackage{mathrsfs}
 \usepackage{tikz-cd}
-\usepackage{eulervm}
-%\usepackage{libertine}
-\usepackage[scaled]{helvet}
-%\usepackage[libertine]{newtxmath}
+%\usepackage{eulervm}
+\usepackage{libertine}
+%\usepackage[scaled]{helvet}
+\usepackage[libertine]{newtxmath}
 %\usepackage{mathpazo}
 %\usepackage{newtxmath}
 \usepackage{anyfontsize}
 %\usepackage{lmodern}
-\usepackage[mathscr]{eucal}
+%\usepackage[mathscr]{eucal}
+
+%\usepackage{fontspec}
+%\setsansfont{Comic Sans MS}
+%\setsansfont{Ubuntu}
 
 \deftranslation[to=spanish]{Theorem}{Teorema}
 \deftranslation[to=spanish]{Definition}{Definición}
@@ -27,13 +32,15 @@
 \newtheorem{prop}{Proposición}
 \newtheorem{lema}{Lema}
 
-\newcommand{\pr}{\mathrm{pr}}
-\newcommand{\id}{\mathrm{id}}
+\newcommand{\pr}{\text{pr}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ad}{\text{ad}}
 \newcommand{\TT}{\mathbb{T}}
 \newcommand{\SF}{\mathbb{S}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\GG}{\mathfrak{g}}
 
 \title{Introducción a los fibrados principales}
 \author{Guillermo Gallego Sánchez}
@@ -123,7 +130,7 @@
   \begin{itemize}
 \item \emph{Función de transición} entre $U$ y $V$:
 	  \begin{align*}
-	    g_{UV} :U\cap V&\longrightarrow \mathrm{Homeo}(F)\\ 
+	    g_{UV} :U\cap V&\longrightarrow \text{Homeo}(F)\\ 
 	    x &\longmapsto \psi_{UV,x}. 
 	    \end{align*}
 	  \item Las funciones de transición cumplen la \emph{condición de cociclo}
@@ -153,11 +160,11 @@
      \begin{equation*}
        g'_{U'V'}=f^{-1}_{VV'}\circ g_{UV} \circ f_{UU'},
      \end{equation*}
-     con $f_{UU'}:U'\rightarrow \mathrm{Homeo}(F)$.
+     con $f_{UU'}:U'\rightarrow \text{Homeo}(F)$.
 \end{frame}
 
 \begin{frame}{Obtención del fibrado desde las funciones de transición}
-  $\mathcal{U}$ recubrimiento abierto de $B$, $G<\mathrm{Homeo}(F)$ y $\left\{ g_{UV}:U\cap V\rightarrow G:U,V\in \mathcal{U} \right\}$ conjunto de funciones de transición de un fibrado $E\rightarrow B$.\pause
+  $\mathcal{U}$ recubrimiento abierto de $B$, $G<\text{Homeo}(F)$ y $\left\{ g_{UV}:U\cap V\rightarrow G:U,V\in \mathcal{U} \right\}$ conjunto de funciones de transición de un fibrado $E\rightarrow B$.\pause
   
   Entonces $E\rightarrow B$ es isomorfo al fibrado $E'\rightarrow B$ con \pause
   \begin{itemize}
@@ -174,7 +181,7 @@
 \end{frame}
 
 \begin{frame}{Fibrados y cohomología de \v{C}ech}
-  $\mathcal{U}$ recubrimiento abierto de $B$. $G<\mathrm{Homeo}(F)$.
+  $\mathcal{U}$ recubrimiento abierto de $B$. $G<\text{Homeo}(F)$.
   
   \pause
   \begin{itemize}
@@ -289,19 +296,279 @@
       \psi_x &\longmapsto x. 
     \end{align*}
     \pause
-    Su fibra es $\mathrm{GL}(n,\RR)$ \pause con la acción
+    Su fibra es $\text{GL}(n,\RR)$\pause, con la acción
 	\begin{center}
 	\begin{tikzcd}[ampersand replacement=\&]
 	  \RR^n \arrow{r}{A} \& \RR^n \arrow{r}{\psi_x} \& T_x M.
 	  \end{tikzcd} 
-	\end{center}\
-\end{frame}<++>
+	\end{center}
+\end{frame}
 
+\begin{frame}{Conexiones en fibrados principales}
+  $p:P\rightarrow B$ con fibra $G$. $x\in B$ $y\in p^{-1}(x)$.
+  \pause
+  \begin{itemize}
+    \item \emph{Subespacio vertical}: $V_y=\ker p_* \subset T_y Y$.
+  \pause
+    \item \emph{Campo vertical}: $X_y \in V_y$ $\forall y \in P$. El corchete de Lie de campos verticales es vertical.
+  \pause
+    \item $V\subset TP$ es \emph{$G$-invariante}: $\forall g\in G$, $R_{g,*}V_y=V_{y\cdot g}$.
+  \pause
+    \item Una \emph{conexión} en $P$ es $H\subset V$, $G$-invariante y tal que $TP=V\oplus H$.
+  \end{itemize}
+\end{frame}
 
-% \begin{frame}{Referencias}
-%   \nocite{*}
-%   \bibliographystyle{plain}
-%   \bibliography{biblio}
-% \end{frame}
+\begin{frame}{El campo fundamental}
+  \begin{align*}
+    \sigma :\GG&\longrightarrow \mathfrak{X}(P)\\ 
+      \xi &\longmapsto \sigma(\xi). 
+    \end{align*}
+    Este $\sigma(\xi)$ se llama \emph{campo fundamental} \pause y su valor es
+    \begin{equation*}
+      \sigma_y(\xi)=\left.\frac{d}{dt} \right|_{t=0}(y\cdot \exp(t\xi)).
+    \end{equation*}
+    \pause
+    \begin{itemize}
+      \item $p_*\sigma_y(\xi)=0$, luego $\sigma(\xi)$ es un campo vertical.
+	\pause
+      \item $\xi \mapsto \sigma_y(\xi)$ es un isomorfismo.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{La $1$-forma de conexión}
+  La \emph{$1$-forma de conexión} de una conexión $H\subset TP$ es $\omega\in \Omega^1(P;\GG)$ \pause definida por
+  \begin{equation*}
+    \omega(Y)=
+    \begin{cases}
+      \xi & \text{si } Y=\sigma(\xi), \\
+      0 & \text{si } Y \text{ es horizontal.}
+    \end{cases}
+  \end{equation*}
+  \pause
+
+  Propiedades:\pause
+  \begin{itemize}
+    \item $H=\ker \omega$ \pause
+    \item $R^*_g\omega=\ad_{g^{-1}}\circ \omega$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conexiones como campos gauge}
+  $\mathcal{U}$ recubrimiento de $B$ por abiertos trivializantes y $\left\{ s_U:U\rightarrow p^{-1}(U):U\in \mathcal{U} \right\}$ familia de secciones locales. El \emph{campo gauge} asociado a una $1$-forma de conexión $\omega\in \Omega^1(P;\GG)$ es
+  \begin{equation*}
+    \left\{ A_U=s^*_U\omega \in \Omega^1(U;\GG): U\in \mathcal{U} \right\}.
+  \end{equation*}
+  \pause
+
+  Se cumple:
+\begin{equation*}
+  \omega|_{p^{-1}(U)}=\ad_{g^{-1}_U}\circ p^*A_U + g^*_U \theta,
+\end{equation*}
+con $\theta\in \Omega^1(G; \GG)$ la \emph{$1$-forma de Maurer-Cartan}, definida por $\theta_g=(L_{g^{-1}})_*$.
+
+\pause 
+Además,
+\begin{equation*}
+  A_U=\ad_{g_{UV}}\circ A_V + g_{VU}^* \theta.
+\end{equation*}
+\end{frame}
+
+\begin{frame}{Curvatura}
+  $p:P\rightarrow B$ fibrado principal, $\omega$ $1$-forma de conexión. \pause
+  
+  Cualquier vector $Y_y \in T_yP$ se descompone como $Y_y=Y_y^v+Y_y^h$.
+  \pause
+
+  La \emph{curvatura} de la conexión definida por $\omega$ es la $2$-forma $\Omega\in \Omega^2(P;\GG)$ definida por
+  \begin{equation*}
+    \Omega(Y_y,Z_y)=d\omega(Y_y^h,Z_y^h).
+  \end{equation*}
+  \pause
+
+  Interpretación geométrica:
+  \begin{equation*}
+    \Omega(Y,Z)=Y^h\omega(Z^h)-Z^h\omega(Y^h)-\omega([Y^h,Z^h])=-\omega([Y^h,Z^h]),
+  \end{equation*}
+  luego $\Omega$ se anula $\Leftrightarrow$ $[Y^h,Z^h]$ es horizontal.
+  \pause
+
+  Propiedades:
+  \begin{itemize}
+    \item $\Omega=d\omega+[\omega,\omega]$ (Ecuación de estructura)
+    \item $d\Omega(Y^h,Z^h,W^h)=0$ (Identidad de Bianchi)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Curvatura como fuerza de campo gauge}
+  $\mathcal{U}$ recubrimiento de $B$ por abiertos trivializantes y $\left\{ s_U:U\rightarrow p^{-1}(U):U\in \mathcal{U} \right\}$ familia de secciones locales. La \emph{fuerza de campo gauge} asociada a la curvatura $\Omega\in \Omega^2(P;\GG)$ de una $1$-forma de conexión $\omega\in \Omega^1(P;\GG)$ es
+  \begin{equation*}
+    \left\{ F_U=s^*_U\Omega \in \Omega^2(U;\GG): U\in \mathcal{U} \right\}.
+  \end{equation*}
+  \pause
+  Propiedades:
+  \begin{itemize}
+    \item $F_U=dA_U+[A_U,A_U]$ (de la ecuación de estructura)
+      \pause
+    \item $F_U=\ad_{g_{UV}}\circ F_V$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fibrados asociados}
+  $p:P\rightarrow B$ fibrado principal con fibra $G$ que actúa sobre $F$ por la izquierda. \pause
+
+  Se define el \emph{fibrado asociado} $P\times_G F$ como el cociente $(P\times F)/G$ por la acción
+  \begin{align*}
+     (P\times F)\times G&\longrightarrow P\times F\\ 
+     ((y,f),g) &\longmapsto (y\cdot g,g^{-1}\cdot f),
+    \end{align*}
+    \pause
+    con la aplicación
+    \begin{align*}
+      p_F :P\times_G F&\longrightarrow B\\ 
+      [(y,f)] &\longmapsto p(y). 
+      \end{align*}
+\end{frame}
+
+\begin{frame}{Ejemplos}
+  \begin{itemize}
+    \item $\SF^1\rightarrow \SF^1$. Se obtiene la banda de Moebius con la acción $(f,\pm 1)\mapsto \pm f$ y el cilindro con la acción trivial.
+      \pause
+    \item $M$ variedad diferenciable y $L(M)\rightarrow M$ el fibrado de referencias. Hay un isomorfismo
+      \begin{align*}
+	L(M)\times_{\text{GL}(n,\RR)}\RR^n&\longrightarrow TM\\ 
+	[(\psi,\mathbf{v})] &\longmapsto \psi(\mathbf{v}). 
+	\end{align*}
+	\pause
+      \item $E \rightsquigarrow P(E)$, $E\cong P(E)\times_G F$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fibrado adjunto y curvatura}
+  \begin{itemize}
+    \item Se llama \emph{fibrado adjunto} de un $G$-fibrado principal $P\rightarrow B$ al fibrado $\ad\ P=P\times_G \GG$, donde el cociente se realiza por la acción dada por la representación adjunta $\ad\ :G\rightarrow \text{Aut}(\GG)$.
+      \pause
+    \item El fibrado adjunto permite ver la curvatura de una conexión como una $2$-forma definida sobre la base: \pause
+      Si tenemos una conexión en $P$ con curvatura $\Omega$ podemos definir $\tilde{\Omega}\in \Omega(B,\ad\ P)$ como
+      \begin{equation*}
+	\tilde{\Omega}_x(X_x,Y_x)=[(y,\Omega_y(X_y^h,Y_y^h))],
+      \end{equation*}
+      con $X_y^h$, $Y_y^h$ los levantamientos horizontales: $X_y^h\in H_y$ único tal que $p_*(X^h_y)=X_x$, $x=p(y)$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Clases características}
+  Buscamos una generalización del teorema de Gauss-Bonnet:
+  \only<1>{
+  \begin{equation*}
+      \int_M K v_g= 2\pi \chi(M).
+  \end{equation*}
+}
+  
+    \only<2>{ \begin{equation*}
+      \underbrace{\int_M K v_g}_{\text{Geometría}} = \underbrace{2\pi \chi(M)}_{\text{Topología}}.
+    \end{equation*}}
+  \end{frame}
+  \begin{frame}{Clases características}
+  
+       En primer lugar buscamos algo que se pueda integrar en toda la variedad:
+       \pause
+       \begin{enumerate}
+	 \item Fijamos un fibrado principal $P\rightarrow M$ y una conexión en $P$. Consideramos la curvatura $\tilde{\Omega} \in \Omega^2(M; \ad\ P)$. 
+	   \pause
+	 \item Si $n=2k$ podemos tomar $\Omega \wedge \overset{(k)}{\cdots} \wedge \Omega$, que se podría integrar en $M$ si tuviera valores reales.
+	   \pause
+	 \item Por tanto, vamos a buscar funciones $f:\ad\ P\rightarrow \RR$.
+       \end{enumerate}
+\end{frame}
+
+\begin{frame}{Clases características}
+  \begin{itemize}
+    \item $S^k(\GG)=\left\{ f:\GG\times\overset{(k)}{\cdots} \times \GG \rightarrow \RR \text{ multilineales y simétricas.}\right\}$
+      \pause
+    \item Llamo $\RR[\GG]_k$, \emph{polinomios homogéneos} a funciones $F:\GG\rightarrow \RR$ tales que, fijado un isomorfismo $\GG\rightarrow \RR^m$, el polinomio $F(\mathtt{x}^1,\dots,\mathtt{x}^m)$ dado por
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  \GG \arrow{r}{F}\arrow{dr} \& \RR    \\ 
+	  \& \RR^m \arrow{u}[anchor=west]{F(\mathtt{x}^1,\dots,\mathtt{x}^m)}
+	  \end{tikzcd}
+	\end{center}
+	es homogéneo. \pause Hay una biyección $S^k(\GG) \leftrightarrow \RR[\GG]_k$.
+	\pause
+      \item Llamo $I^k(\GG)\subset S^k(\GG)$, \emph{polinomios invariantes} a las $f\in S^k(\GG)$ tales que
+	\begin{equation*}
+	  f(\ad_g \xi_1,\dots,\ad_g \xi_k)=f(\xi_1,\dots,\xi_k).
+	\end{equation*}
+  \end{itemize}
+\end{frame}
+\begin{frame}{Clases características}
+  \begin{theorem}[Construcción de Weil de las clases características]
+    Sea $p:P\rightarrow B$ un fibrado principal con fibra $G$, $\omega$ una $1$-forma de conexión en $P$ con curvatura $\Omega$ y $f\in I^k(\GG)$. \pause La $2k$-forma $f(\Omega \wedge \overset{(k)}{\cdots}\wedge \Omega)$ en $P$ definida por
+    \begin{align*}
+      f(\Omega &\wedge \overset{(k)}{\cdots}\wedge \Omega)(Y_1,\dots,Y_{2k})= \\ & =\frac{1}{2k!}\sum_{\sigma \in \mathfrak{S}_{2k}}(-1)^{\sigma} f(\Omega(Y_{\sigma(1)},Y_{\sigma(2)}),\dots,\Omega(Y_{\sigma(2k-1)},Y_{\sigma(2k)}))
+    \end{align*}
+    tiene las siguientes propiedades:
+    \pause
+    \begin{enumerate}
+      \item Se puede proyectar (es la pullback por $p$ de una $2k$-forma en $B$).
+	\pause
+      \item Es cerrada.
+	\pause
+      \item La clase de cohomología de su proyección en $B$ no depende de la elección de la conexión $\omega$. Esta clase se llama la \emph{clase característica del fibrado $P\rightarrow B$ asociada a $f$}.
+    \end{enumerate}
+  \end{theorem}
+\end{frame}
+\begin{frame}{Ejemplo: Fibrados $U(1)$}
+ $\SF^2$ y $U_N$, $U_S$ los hemisferios norte y sur. \pause
+
+ Consideramos un fibrado principal $U(1)$ dado por la función de transición
+ \only<2>{
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  U_N\cap U_S \arrow{r}{\psi} \& U(1)    
+	  \end{tikzcd}
+	\end{center}
+      }
+ \only<3>{
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  U_N\cap U_S\arrow{d}{\sim} \arrow{r}{\psi} \& U(1)\arrow{d}{\sim} \\
+	  \SF^1 \arrow{r} \& \SF^1
+	  \end{tikzcd}
+	\end{center}
+      }
+ \only<4>{
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  U_N\cap U_S\arrow{dd}{\sim} \arrow{r}{\psi} \& U(1)\arrow{dd}{\sim} \\
+	  \\
+	  \SF^1 \arrow{r} \& \SF^1 \\
+	  \phi\ (\text{mod}\ 2\pi) \arrow[mapsto]{r} \& k\phi\ (\text{mod}\ 2\pi).
+	  \end{tikzcd}
+	\end{center}
+      }
+      \pause
+      Para cada grado $k\in \ZZ$ tenemos un fibrado principal distinto $P_k\rightarrow \SF^2$.
+\end{frame}
+\begin{frame}{Ejemplo: Fibrados $U(1)$}
+  Consideramos la conexión definida por un campo gauge $A$ de la forma \pause
+  \begin{itemize}
+    \item en $U_N$, $A_N=0$, \pause
+    \item en $U_N\cap U_S$, $A_S=\psi A_N + \psi d\psi = \psi d\psi$ y lo extendemos de cualquier manera a todo $U_S$.
+  \end{itemize}
+  \pause
+  La curvatura es $F=dA+[A,A]=dA$.
+  \pause
+  Como $U(1)$ es abeliano, todos los polinomios son invariantes y puedo escoger $p(\mathtt{x})=\frac{1}{2\pi}\mathtt{x}$.
+  \pause
+  Finalmente,
+	       \begin{align*}
+		 \int_{\SF^2} p(\Omega)&=\frac{1}{2\pi}\int_{U_S}dA_S=\frac{1}{2\pi}\int_{U_N\cap U_S}A_S|_{U_N\cap U_S}\\ &=\frac{1}{2\pi}\int_{U_N\cap U_S}\psi d\psi= \frac{1}{2\pi} \int_0^{2\pi} k\phi d\phi = k.
+	       \end{align*}
+\end{frame}
+ \begin{frame}{Referencias}
+   \nocite{*}
+   \bibliographystyle{plain}
+   \bibliography{biblio2}
+ \end{frame}
 
 \end{document}

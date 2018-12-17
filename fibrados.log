@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.28)  9 DEC 2018 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.10.28)  17 DEC 2018 17:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1568,7 +1568,7 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 243.
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [5] [6] [7] [8]
 [9] [10] [11] [12] [13]
-Overfull \hbox (6.68883pt too wide) in paragraph at lines 618--619
+Overfull \hbox (6.68883pt too wide) in paragraph at lines 619--620
 []\OT1/LinuxLibertineT-TLF/m/n/12 Veamos que es-ta de-fi-ni-ci[]on da un fi-bra
 -do con fi-bra $\OML/nxlmi/m/it/12 F$\OT1/LinuxLibertineT-TLF/m/n/12 . Las tri-
 via-li-za-cio-nes de $\OML/nxlmi/m/it/12 P$\OT1/LinuxLibertineT-TLF/m/n/12 , $\
@@ -1577,14 +1577,14 @@ U/ntxmia/m/it/12 {\OML/nxlmi/m/it/12 U\U/ntxmia/m/it/12 | \OMS/ntxsy/m/n/12 !
  []
 
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 12.0pt on input line 644.
+(Font)              scaled to size 12.0pt on input line 645.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 8.8pt on input line 644.
+(Font)              scaled to size 8.8pt on input line 645.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/sb/n' will be
-(Font)              scaled to size 6.6pt on input line 644.
+(Font)              scaled to size 6.6pt on input line 645.
 [14]
 LaTeX Font Info:    Try loading font information for OT1+LinuxLibertineMonoT-TL
-F on input line 675.
+F on input line 676.
 
 (/usr/share/texlive/texmf-dist/tex/latex/libertine/OT1LinuxLibertineMonoT-TLF.f
 d
@@ -1592,30 +1592,30 @@ File: OT1LinuxLibertineMonoT-TLF.fd 2012/12/06 (autoinst) Font definitions for
 OT1/LinuxLibertineMonoT-TLF.
 )
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 675.
+(Font)              scaled to size 12.0pt on input line 676.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 8.8pt on input line 675.
+(Font)              scaled to size 8.8pt on input line 676.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineMonoT-TLF/m/n' will be
-(Font)              scaled to size 6.6pt on input line 675.
+(Font)              scaled to size 6.6pt on input line 676.
  [15] [16] [17] [18] [19] (./fibrados.bbl (./fibrados.brf)
 \tf@brf=\write6
 \openout6 = `fibrados.brf'.
 
 ) [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 859.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 859.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 860.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 860.
 
 (./fibrados.aux
 LaTeX Info: Redefining \. on input line 20.
 LaTeX Info: Redefining \% on input line 20.
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 859.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 859.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 860.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 860.
 Package rerunfilecheck Info: File `fibrados.out' has not changed.
 (rerunfilecheck)             Checksum: B3BCA311C5367527D5D6FD3A5C67089D;609.
 Package rerunfilecheck Info: File `fibrados.brf' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 859.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 860.
  ) 
 Here is how much of TeX's memory you used:
  22809 strings out of 494850
@@ -1650,7 +1650,7 @@ s/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/newtx/zxlr.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on fibrados.pdf (20 pages, 606021 bytes).
+Output written on fibrados.pdf (20 pages, 606009 bytes).
 PDF statistics:
  295 PDF objects out of 1000 (max. 8388607)
  251 compressed objects within 3 object streams
