@@ -1,0 +1,307 @@
+\documentclass[mathserif]{beamer}
+%\documentclass[aspectratio=169,mathserif]{beamer}
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm, mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{eulervm}
+%\usepackage{libertine}
+\usepackage[scaled]{helvet}
+%\usepackage[libertine]{newtxmath}
+%\usepackage{mathpazo}
+%\usepackage{newtxmath}
+\usepackage{anyfontsize}
+%\usepackage{lmodern}
+\usepackage[mathscr]{eucal}
+
+\deftranslation[to=spanish]{Theorem}{Teorema}
+\deftranslation[to=spanish]{Definition}{Definición}
+
+\newtheorem{prop}{Proposición}
+\newtheorem{lema}{Lema}
+
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\SF}{\mathbb{S}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\title{Introducción a los fibrados principales}
+\author{Guillermo Gallego Sánchez}
+\institute{Geometría de superficies topológicas}
+\date{17 de diciembre de 2018}
+
+\logo{\includegraphics[height=.7cm]{logogris}}
+
+		      \let\emph\relax
+		      \DeclareTextFontCommand{\emph}{\it\bfseries}
+
+\begin{document}
+\begin{frame}
+  \maketitle
+\end{frame}
+\begin{frame}{Fibrados}
+  \begin{columns}[T]
+    \begin{column}{.25\textwidth}
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	    F \arrow{r} \& E\arrow{ddd}{p}    \\ 
+	    \& \\
+	    \& \\
+	    \& B
+	  \end{tikzcd}
+	\end{center}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      Un \emph{fibrado} $(E,B,p,F)$ \pause consta de:
+      \begin{itemize}
+	\item \emph{base}: $B$ \pause
+	\item \emph{espacio total}: $E$ \pause
+	\item \emph{fibra}: $F$ \pause
+	\item $p:E\rightarrow B$ aplicación continua \pause tal que $\forall x\in B$ $\exists U^x$ y una \emph{trivialización} \pause
+	\begin{tikzcd}[ampersand replacement=\&]
+	  p^{-1}(U) \arrow{rr}{\varphi_U} \arrow{rd}{p} \& \& U\times F\arrow{ld}{\pr_1}    \\ 
+	    \& U \&
+	  \end{tikzcd}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Ejemplos}
+  \begin{itemize}
+    \item El \emph{fibrado trivial}:
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	    F \arrow{r} \& B\times F\arrow{d}{\pr_1}    \\ 
+	    \& B
+	  \end{tikzcd}
+	\end{center}\pause
+      \item La \emph{cinta de Moebius}:
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	    (0,1) \arrow{r} \& E\arrow{d}{\pr_1}    \\ 
+	    \& \SF^1,
+	  \end{tikzcd}
+	\end{center}
+	con $E=\left\{ (x,y):x\in \RR, y \in (0,1) \right\}/(x,y)\sim (x+1,1-y)$ y $p:E\rightarrow \SF^1$, viendo la base como $\SF^1=\left\{ x\in \RR \right\}/x\sim x+1$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Funciones de transición}
+  $E\rightarrow B$ fibrado, $x\in B$, $U^x$, $V^x$. 
+  \pause
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement=\&]
+	U\cap V \times F \arrow{r}{\varphi^{-1}_U} \arrow{rd}{\pr_1} \& p^{-1}(U\cap V) \arrow{d}{p} \arrow{r}{\varphi_V}\& U\cap V \times F \arrow{ld}{\pr_1} 	\\ 
+\&	U\cap V\&
+      \end{tikzcd}
+    \end{center}
+    \pause
+
+      \begin{align*}
+	\varphi_V \circ \varphi_U^{-1} :(U\cap V) \times F&\longrightarrow (U\cap V)\times F\\ 
+	(x,y) &\longmapsto (x,\psi_{UV}(x,y))
+	\end{align*}
+
+	\pause
+	\begin{align*}
+	  \psi_{UV,x} :F&\longrightarrow F\\ 
+	  y &\longmapsto \psi_{UV}(x,y) 
+	  \end{align*}
+	\end{frame}
+
+\begin{frame}{Funciones de transición}
+  \begin{itemize}
+\item \emph{Función de transición} entre $U$ y $V$:
+	  \begin{align*}
+	    g_{UV} :U\cap V&\longrightarrow \mathrm{Homeo}(F)\\ 
+	    x &\longmapsto \psi_{UV,x}. 
+	    \end{align*}
+	  \item Las funciones de transición cumplen la \emph{condición de cociclo}
+	    \begin{equation*}
+	      g_{UW}=g_{VW}\circ g_{UV}.
+	    \end{equation*}
+	    En particular, $g_{UU}=\id$ y $g_{UV}=g_{VU}^{-1}$.
+	\item Con estructura adicional en las funciones de transición obtenemos otro tipo de fibrados (por ejemplo, fibrados vectoriales $\rightsquigarrow$ matrices de transición).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Isomorfismo de fibrados}
+  $p:E\rightarrow B$, $p':E\rightarrow B'$ fibrados con fibra $F$. \pause
+
+  Un \emph{isomorfismo de fibrados} entre $p:E\rightarrow B$ y $p:E'\rightarrow B'$ es un par de homeomorfismos $(f,\tilde{f})$ tales que \pause el diagrama
+  \begin{center}
+    \begin{tikzcd}[ampersand replacement=\&]
+      E'      \arrow{rr}{\tilde{f}}\arrow{dd}[anchor=east]{p'} \&\& E\arrow{dd}[anchor=west]{p} \\ 
+       \&\& \\
+       B'\arrow{rr}[anchor=south]{f} \&\& B
+     \end{tikzcd}
+   \end{center}
+   conmuta.
+
+   \pause
+    Las funciones de transición se relacionan por 
+     \begin{equation*}
+       g'_{U'V'}=f^{-1}_{VV'}\circ g_{UV} \circ f_{UU'},
+     \end{equation*}
+     con $f_{UU'}:U'\rightarrow \mathrm{Homeo}(F)$.
+\end{frame}
+
+\begin{frame}{Obtención del fibrado desde las funciones de transición}
+  $\mathcal{U}$ recubrimiento abierto de $B$, $G<\mathrm{Homeo}(F)$ y $\left\{ g_{UV}:U\cap V\rightarrow G:U,V\in \mathcal{U} \right\}$ conjunto de funciones de transición de un fibrado $E\rightarrow B$.\pause
+  
+  Entonces $E\rightarrow B$ es isomorfo al fibrado $E'\rightarrow B$ con \pause
+  \begin{itemize}
+    \item espacio total
+      \begin{equation*}
+	E'=\bigsqcup_{U\in \mathcal{U}}(U\times F)/(x,y)\sim(x,g_{UV}(x)(y))
+      \end{equation*}\pause
+    \item la proyección
+      \begin{align*}
+	p :E'&\longrightarrow B\\ 
+	[(x,y)] &\longmapsto  x.
+	\end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fibrados y cohomología de \v{C}ech}
+  $\mathcal{U}$ recubrimiento abierto de $B$. $G<\mathrm{Homeo}(F)$.
+  
+  \pause
+  \begin{itemize}
+    \item
+  Un conjunto de funciones $\left\{ g_{UV}:U\cap V\rightarrow G:U,V \in \mathcal{U} \right\}$ es:
+      un \emph{$1$-cociclo de \v{C}ech subordinado a $\mathcal{U}$ con coeficientes en $G$} si 
+      \begin{equation*}
+	g_{UW}=g_{VW}\circ g_{UV},
+      \end{equation*}
+      \pause
+    \item Se llama \emph{primer grupo de cohomología de \v{C}ech subordinado a $\mathcal{U}$ con coeficientes en $G$} al cociente
+      \begin{equation*}
+	\check{H}(\mathcal{U},G)=\left\{ 1\text{-cociclos} \right\}/g_{UV}\sim (f^{-1}_{VV'}\circ g_{UV} \circ f_{UU'}).
+      \end{equation*}
+      \pause
+    \item Tomando el límite directo por refinamiento del recubrimiento, tenemos el \emph{primer grupo de cohomología de \v{C}ech con coeficientes en $G$} 
+      \begin{equation*}
+	\check{H}^1(B,G)=\varinjlim_{\mathcal{U}} \check{H}^1(\mathcal{U},G).
+      \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Secciones}
+  \begin{columns}[T]
+    \begin{column}{.25\textwidth}
+	  \begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  F \arrow{r} \& E\arrow{ddd}[anchor=east]{p}    \\ 
+	    \& \\
+	    \& \\
+	    \& B\arrow[bend right]{uuu}{s}
+	  \end{tikzcd}
+	\end{center}
+    \end{column}
+    \begin{column}{.5\textwidth}
+      Una \emph{sección} de un fibrado $p:E\rightarrow B$ es una aplicación continua $s:B\rightarrow E$ tal que $p\circ s=\id_B$.  \pause
+
+      Una sección local es una sección definida en un abierto $U\subset B$. \pause
+     
+      Denotamos $\Gamma(E)$ al conjunto de las secciones de $E\rightarrow B$ y $\Gamma(U,E)$ al conjunto de las secciones locales definidas en un abierto $U\subset B$.
+    \end{column}
+  \end{columns}
+\end{frame}
+\begin{frame}{Fibrados principales}
+  Un \emph{fibrado principal} $(P,B,p,G)$ consta de:
+  \begin{itemize}
+    \item una variedad diferenciable $P$, \pause
+    \item un grupo de Lie $G$ actuando libremente por la derecha sobre $P$:
+      \begin{align*}
+	 P\times G&\longrightarrow P\\ 
+	  (p,g) &\longmapsto p\cdot g, 
+	\end{align*} \pause
+      \item $B=P/G$ con una sumersión $p:P\rightarrow P/G$, que es la proyección canónica al cociente \pause y tal que $\forall x\in B$ $\exists U^x$ y una trivialización 
+	\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  p^{-1}(U) \arrow{rr}{\varphi_U} \arrow{rd}{p} \& \& U\times G\arrow{ld}{\pr_1}    \\ 
+	    \& U \&.
+	  \end{tikzcd} 
+	\end{center}\pause
+
+	  Además, $\varphi_U(y)=(p(y),g_U(y))$ para cierta $g_U:p^{-1}(U)\rightarrow G$ con $g_{U}(y\cdot g)=g_U(y)\cdot g$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Observaciones}
+  \begin{itemize}
+    \item Podemos pensar en un fibrado principal como en un fibrado sobre una variedad diferenciable cuya fibra es un grupo de Lie. \pause
+      En efecto, para cada sección local $s_U:U\rightarrow P$ y para cada $y\in p^{-1}(x)$ existe un único elemento $g_U(y)\in G$ con $y=s_U(x)g_U(y)$. \pause
+    \item Las funciones de transición son de la forma
+      \begin{align*}
+	 U\cap V \times G&\longrightarrow U\cap V\times G\\ 
+	 (x,h) &\longmapsto (x,g_{UV}(x)h). 
+	\end{align*}
+	\pause
+      \item Un fibrado principal admite una sección global si y sólo si es trivial.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Ejemplos}
+  \begin{itemize}
+    \item $P=B=\SF^1\subset \CC$ y 
+      \begin{align*}
+	p :\SF^1&\longrightarrow \SF^1\\ 
+	  z &\longmapsto z^2.
+	\end{align*}
+	\pause
+	Fibra $\ZZ_2$ con la acción
+	\begin{align*}
+	   \SF^1\times \ZZ_2&\longrightarrow \SF^1\\ 
+	    (z,\pm 1) &\longmapsto \pm z. 
+	  \end{align*}
+	  \pause
+	\item $p:\tilde{M}\rightarrow M$ recubridor universal. \pause
+	  
+	 Fibra $\pi_1(M)$ con la acción de monodromía: 
+	\begin{align*}
+	  \tilde{M}\times \pi_1(M)&\longrightarrow \tilde{M}\\ 
+	  (y,g) &\longmapsto \tilde{\gamma}_g^y(1).
+	  \end{align*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Fibrado de referencias}
+  El \emph{fibrado de referencias} sobre una variedad diferenciable $M$ tiene por espacio total
+  \begin{equation*}
+    L(M)=\left\{ \psi_x:\RR^n \rightarrow T_x M: x\in M,\ \psi_x \text{ es un isomorfismo lineal}  \right\}
+  \end{equation*}
+  \pause
+  con la aplicación
+  \begin{align*}
+    p :L(M)&\longrightarrow M\\ 
+      \psi_x &\longmapsto x. 
+    \end{align*}
+    \pause
+    Su fibra es $\mathrm{GL}(n,\RR)$ \pause con la acción
+	\begin{center}
+	\begin{tikzcd}[ampersand replacement=\&]
+	  \RR^n \arrow{r}{A} \& \RR^n \arrow{r}{\psi_x} \& T_x M.
+	  \end{tikzcd} 
+	\end{center}\
+\end{frame}<++>
+
+
+% \begin{frame}{Referencias}
+%   \nocite{*}
+%   \bibliographystyle{plain}
+%   \bibliography{biblio}
+% \end{frame}
+
+\end{document}

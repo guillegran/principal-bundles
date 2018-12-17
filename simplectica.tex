@@ -1,0 +1,332 @@
+\documentclass[mathserif]{beamer}
+%\documentclass[aspectratio=169,mathserif]{beamer}
+\beamertemplatenavigationsymbolsempty
+
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm, mathtools}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{eulervm}
+%\usepackage{libertine}
+\usepackage[scaled]{helvet}
+%\usepackage[libertine]{newtxmath}
+%\usepackage{mathpazo}
+%\usepackage{newtxmath}
+\usepackage{anyfontsize}
+%\usepackage{lmodern}
+\usepackage[mathscr]{eucal}
+
+\deftranslation[to=spanish]{Theorem}{Teorema}
+\deftranslation[to=spanish]{Definition}{Definición}
+
+\newtheorem{prop}{Proposición}
+\newtheorem{lema}{Lema}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\TT}{\mathbb{T}}
+\newcommand{\SF}{\mathbb{S}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\title{Introducción a la geometría simpléctica y los sistemas integrables}
+\author{Guillermo Gallego Sánchez}
+\institute{Departamento de Álgebra, Geometría y Topología}
+\date{13 de julio de 2018}
+
+\logo{\includegraphics[height=.7cm]{logogris}}
+
+\begin{document}
+\begin{frame}
+  \maketitle
+\end{frame}
+\begin{frame}{Geometría simpléctica}
+  \begin{itemize}
+    \item  Una \emph{variedad simpléctica} es un par $(M,\omega)$, donde $M$ es una variedad diferenciable y $\omega$ es una $2$-forma diferencial no degenerada y cerrada, es decir, tal que $\mathrm{d}\omega=0$.
+
+    \item  El \emph{teorema de Darboux} garantiza que localmente es posible encontrar unas coordenadas $(q,p)$ (llamadas \emph{de Darboux}) en las que la forma toma el aspecto $\omega=\sum_i \mathrm{d}p_i \wedge \mathrm{d}q_i$.
+
+    \item Sea una función $H\in \mathscr{C}^{\infty}(M) $. Se define el \emph{campo hamiltoniano asociado a} $H$, como el campo $X^H$ tal que $i_{X^H}\omega=-\mathrm{d}H$. En coordenadas de Darboux el campo $X^H$ se expresa
+   \begin{equation*}
+     X^H=\sum_i \frac{\partial H}{\partial p_i}\frac{\partial}{\partial q_i}-\frac{\partial H}{\partial q_i}\frac{\partial}{\partial p_i}.
+   \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Corchete de Poisson}
+  Sea $(M,\omega)$ una variedad simpléctcia y $F,G\in \mathscr{C}^{\infty}(M)$. Se define el \emph{corchete de Poisson de $F$ y $G$} como la función
+  \begin{equation*}
+    \left\{ F,G \right\}=X^FG.
+  \end{equation*}
+  Propiedades:
+  \begin{itemize}
+    \item $\left\{ F,G \right\}=\dd G(X^F)=\omega(X^F,X^G)$.
+    \item $\left[ X^F,X^G \right]=X^{\left\{ F,G \right\}}$.
+    \item $(\mathscr{C}^{\infty}(M),\left\{\bullet,\bullet \right\})$ es un álgebra de Lie.
+    \item Regla de Leibniz: $\left\{ F,\bullet \right\}$ es una derivación. 
+    \item En coordenadas de Darboux se expresa
+      \begin{equation*}
+	\left\{ F,G \right\}=\sum_{i=1}^n\left( \frac{\partial F}{\partial p_i}\frac{\partial G}{\partial q_i}- \frac{\partial F}{\partial q_i}\frac{\partial G}{\partial p_i} \right)
+      \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Mecánica hamiltoniana}
+  Un \emph{sistema mecánico hamiltoniano} $(M,H)$ con $n$ grados de libertad consiste en:
+  \begin{itemize}
+    \item \textbf{Estados}: Una variedad simpléctica $M$ de dimensión $2n$. $M$ se le suele llamar \emph{espacio de fases}. Los puntos de $M$ se llaman \emph{estados} del sistema.
+    \item \textbf{Observables}: Las funciones del álgebra de Poisson $\mathscr{C}^{\infty}(M)$.
+    \item \textbf{Evolución temporal}: Viene dictada por el \emph{hamiltoniano} $H\in \mathscr{C}^{\infty}(M)$. La evolución temporal de los estados sigue las curvas integrales del campo hamiltoniano $X^H$. En coordenadas de Darboux, se cumplen las \emph{ecuaciones de Hamilton}
+      \begin{equation*}
+	\begin{cases}
+	  \dot{q_i}(t)=\dfrac{\partial H}{\partial p_i}, \\[8 pt]
+	  \dot{p_i}(t)=-\dfrac{\partial H}{\partial q_i}.
+	\end{cases}
+      \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Sistemas integrables}
+  Sea $(M,H)$ un sistema hamiltoniano con $n$ grados de libertad. Diremos que $(M,H)$ es \emph{integrable en el sentido de Liouville} si existen $F_1=H,F_2,\dots,F_n \in \mathscr{C}^{\infty}(M)$ que
+  \begin{enumerate}
+    \item son funcionalmente independientes ($\dd F_{1,x}\wedge \dots \wedge \dd F_{n,x}\neq 0$), y
+    \item están en involución ($\left\{ F_i,F_j \right\}=0$ para cada $i,j=1,\dots,n$).
+  \end{enumerate}
+
+  Ejemplos:
+  \begin{itemize}
+    \item Sistemas con 1 grado de libertad.
+    \item Sistemas con 2 grados de libertad y una cantidad conservada independiente de $H$ (e.g. el momento angular).
+    \item El potencial central.
+    \item El trompo simétrico.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Teorema de Arnold-Liouville}
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{arnold.jpg}
+    \caption{Este Arnold no es}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Teorema de Arnold-Liouville}
+  \begin{theorem}
+  Sea $(M,H)$ un sistema integrable en el sentido de Liouville con $F_1=H,F_2,\dots,F_n$ las cantidades en involución y $F=(F_1,\dots,F_n):M\rightarrow \RR$. Sea $a$ un valor regular de $F$ y el conjunto de nivel $M_a=F^{-1}(a)$. 
+  Entonces:
+  \begin{enumerate}
+    \item $M_a$ es una subvariedad de $M$ invariante bajo el flujo $\varphi^H$ de $X^H$.
+    \item Si $M_a$ es compacta y conexa:
+      \begin{enumerate}
+	\item $M_a\cong \TT^n$. (\emph{Toro de Liouville})
+	\item Para cada $x\in M_a$ se puede dar una parametrización $\psi$ de $M_a$ y unas frecuencias constantes $\nu$ tales que $\varphi_t^H(x)=\psi(\nu t)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Ejemplo: El péndulo}
+  \centering
+%  \includegraphics[width=0.5\textwidth]{pendulo}
+  \includegraphics[width=0.8\textwidth]{pendulo}
+\end{frame}
+
+\begin{frame}{Teorema de Arnold-Liouville}
+  \begin{theorem}
+  Sea $(M,H)$ un sistema integrable en el sentido de Liouville con $F_1=H,F_2,\dots,F_n$ las cantidades en involución y $F=(F_1,\dots,F_n):M\rightarrow \RR$. Sea $a$ un valor regular de $F$ y el conjunto de nivel $M_a=F^{-1}(a)$. 
+  Entonces:
+  \begin{enumerate}
+    \item $M_a$ es una subvariedad de $M$ invariante bajo el flujo $\varphi^H$ de $X^H$.
+    \item Si $M_a$ es compacta y conexa:
+      \begin{enumerate}
+	\item $M_a\cong \TT^n$. (\emph{Toro de Liouville})
+	\item Para cada $x\in M_a$ se puede dar una parametrización $\psi$ de $M_a$ y unas frecuencias constantes $\nu$ tales que $\varphi_t^H(x)=\psi(\nu t)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Demostración (1)}
+  \begin{itemize}
+    \item $F_1,\dots,F_n$ funcionalmente independientes $\implies$ $M_a$ subvariedad regular de $M$.
+    \item $\left\{ F_i,F_j \right\}=0$ $\implies$ $\dd F_j(X^{F_i})=0$ $\implies$ Campos tangentes a $M_a$ $\implies$ $M_a$ invariante.
+    \item Además, $\left\{ F_i,F_j \right\}=0$ $\implies$ $\left[ X^{F_i},X^{F_j} \right]=0$.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Teorema de Arnold-Liouville}
+  \begin{theorem}
+  Sea $(M,H)$ un sistema integrable en el sentido de Liouville con $F_1=H,F_2,\dots,F_n$ las integrales en involución y $F=(F_1,\dots,F_n):M\rightarrow \RR$. Sea $a$ un valor regular de $F$ y el conjunto de nivel $M_a=F^{-1}(a)$. 
+  Entonces:
+  \begin{enumerate}
+    \item $M_a$ es una subvariedad de $M$ invariante bajo el flujo $\varphi^H$ de $X^H$.
+    \item Si $M_a$ es compacta y conexa:
+      \begin{enumerate}
+	\item $M_a\cong \TT^n$. (\emph{Toro de Liouville})
+	\item Para cada $x\in M_a$ se puede dar una parametrización $\psi$ de $M_a$ y unas frecuencias constantes $\nu$ tales que $\varphi_t^H(x)=\psi(\nu t)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Demostración (2.1)}
+  Vamos a aplicar el siguiente lema con $N=M_a$, $X_i=X^{F_i}$.
+
+  \begin{lema}
+  Sea $N$ una variedad diferenciable de dimensión $n$ conexa y compacta tal que existen campos $X_1,\dots,X_n$ linealmente independientes y $\left[ X_i,X_j \right]=0$. Entonces $N\cong \TT^n$.
+  \end{lema}
+\end{frame}
+
+\begin{frame}{Demostración del Lema (1)}
+  \begin{itemize}
+    \item Fijo $x_0\in N$.
+    \item $X_i$ $\rightsquigarrow$ flujo $g_i$. 
+    \item $\left[ X_i,X_j \right]=0 \implies$ flujos conmutan.
+    \item Puedo definir
+      \begin{align*}
+	g :\RR^n &\longrightarrow N\\ 
+	t=(t_1,\dots,t_n) &\longmapsto g_t(x_0)= g_{1,t_1}\circ g_{2,t_2}\circ \cdots \circ g_{n,t_n}(x_0).
+	\end{align*}
+      \item $g$ es un difeomorfismo local sobreyectivo.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Idea de que $g$ es sobreyectiva}
+  \includegraphics[width=\textwidth]{entornos}
+\end{frame}
+
+\begin{frame}{Demostración del Lema (2)}
+  Sea 
+  \begin{equation*}
+    \Gamma=\left\{ t\in \RR^n |g_t(x_0)=x_0 \right\}.
+  \end{equation*}
+  \begin{itemize}
+    \item $\Gamma$ es un subgrupo cerrado y discreto de $(\RR^n,+)$.
+
+\item La aplicación $\tilde{g}$ dada por el siguiente diagrama es un difeomorfismo
+  \begin{center}
+    \begin{tikzcd}[ampersand replacement=\&]
+      \RR^n \arrow{r}{g} \arrow{d}[anchor=east]{\pi}\& N      \\
+      \RR^n/\Gamma.\arrow{ru}[anchor=north]{\tilde{g}} \&
+    \end{tikzcd}
+  \end{center}
+\item Existen $e_1,\dots,e_k\in \Gamma$ linealmente independientes tales que
+    \begin{equation*}
+      \Gamma=\left\{ n_1e_1+\dots+n_ke_k|n_1,\dots,n_k \in \ZZ \right\}\cong \ZZ^k.
+    \end{equation*}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Demostración del Lema (3)}
+  Sea
+  \begin{align*}
+    \varpi :\RR^n=\RR^k\times \RR^{n-k}&\longrightarrow \TT^k \times \RR^{n-k}\\ 
+      (\theta,y) &\longmapsto (\exp(\theta),y),
+    \end{align*}
+    con
+    \begin{align*}
+      \exp :\RR^k&\longrightarrow \TT^k=\SF^1\times \overset{(k)}{\cdots} \times \SF^1\\ 
+      (\theta_1,\dots,\theta_k) &\longmapsto (e^{i\theta_1},\dots,e^{i\theta_k}). 
+      \end{align*}
+      Y sea un isomorfismo lineal tal que
+      \begin{align*}
+	\zeta :\RR^k\times \RR^{n-k}&\longrightarrow \RR^n\\ 
+	(\theta,0) &\longmapsto \frac{\theta_1}{2\pi}e_1+\cdots+\frac{\theta_k}{2\pi}e_k.
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Demostración del Lema (4 y última)}
+ 	  \begin{center}
+	    \begin{tikzcd}[ampersand replacement=\&]
+	      \&2\pi \mathbb{Z}^k \arrow{rr}{\zeta|}\arrow[hook]{d} \&\& \Gamma \arrow[hook]{d} \&\&	      \\ 
+	      \&\RR^n \arrow{dd}{\varpi=(\exp,\mathrm{id})} \arrow{rr}{\zeta} \&\& \RR^n \arrow{dd}{\pi} \arrow{rrdd}{g} \&\& \\
+	      \& \&\& \&\&\\
+	      \TT^k \times \RR^{n-k}\arrow[equal]{r}\arrow[bend right=20]{rrrrr}{\cong}\&\RR^n/2\pi \mathbb{Z}^k \arrow{rr}{\tilde{\zeta}} \&\& \RR^n/\Gamma \arrow{rr}{\tilde{g}} \&\& N.
+	    \end{tikzcd}
+	  \end{center}
+\end{frame}
+
+\begin{frame}{Teorema de Arnold-Liouville}
+  \begin{theorem}
+  Sea $(M,H)$ un sistema integrable en el sentido de Liouville con $F_1=H,F_2,\dots,F_n$ las integrales en involución y $F=(F_1,\dots,F_n):M\rightarrow \RR$. Sea $a$ un valor regular de $F$ y el conjunto de nivel $M_a=F^{-1}(a)$. 
+  Entonces:
+  \begin{enumerate}
+    \item $M_a$ es una subvariedad de $M$ invariante bajo el flujo $\varphi^H$ de $X^H$.
+    \item Si $M_a$ es compacta y conexa:
+      \begin{enumerate}
+	\item $M_a\cong \TT^n$. (\emph{Toro de Liouville})
+	\item Para cada $x\in M_a$ se puede dar una parametrización $\psi$ de $M_a$ y unas frecuencias constantes $\nu$ tales que $\varphi_t^H(x)=\psi(\nu t)$.
+      \end{enumerate}
+  \end{enumerate}
+\end{theorem}
+\end{frame}
+
+
+\begin{frame}{Demostración (2.2)}
+ 	  \begin{center}
+	    \begin{tikzcd}[ampersand replacement=\&]
+	      \RR^n \arrow[bend left=45]{rrrrdd}{\psi}\arrow{dd}{\exp} \arrow{rr}{\zeta} \&\& \RR^n \arrow{dd}{\pi} \arrow{rrdd}{\varphi^F_\bullet} \&\& \\
+	       \&\& \&\&\\
+	       \TT^n  \arrow{rr}{\tilde{\zeta}} \&\& \RR^n/\Gamma \arrow{rr}{\tilde{\varphi}^F_\bullet} \&\& M_a.
+	    \end{tikzcd}
+	  \end{center}
+
+	  Sea $\nu \in \RR^n$ tal que $\zeta(\nu)=(1,0,\dots,0)$. Entonces
+	  \begin{equation*}
+	    \psi(\nu t)=\varphi^F_{\zeta(\nu t)}(x)=\varphi^F_{(t,0,\dots,0)}(x)=\varphi_t^{F_1}(x)=\varphi_t^H(x).
+	  \end{equation*}
+\end{frame}
+
+\begin{frame}{Variables de acción-ángulo}
+  \begin{theorem}
+   En torno a cada toro de Liouville hay un entorno $U\cong \RR^n\times \TT^n$ y un sistema de coordenadas de Darboux $(\phi,J)$ en $U$ tales que en cada toro de $U$ las $\phi_i$ son coordenadas angulares y las $J_i$ son constantes.
+  \end{theorem}
+\end{frame}
+
+\begin{frame}{Integrabilidad por cuadraturas (1)}
+  En el entorno $U$ con las coordenadas $(\phi,J)$ las ecuaciones de Hamilton quedan resueltas. En efecto,
+  \begin{equation*}
+    \begin{cases}
+      \dot{\phi}_i=\dfrac{\partial H}{\partial J_i}, \\[7 pt]
+      \dot{J}_i = -\dfrac{\partial H}{\partial \phi_i}.
+    \end{cases}
+  \end{equation*}
+     $J_i$ constantes en cada toro de Liouville $\implies$ $\dot{J_i}=0$ $\implies$ $\frac{\partial H}{\partial \phi_i}=0$ $\implies$ el hamiltoniano no depende de las $\phi$ $\implies$ las frecuencias $\nu_i=\dot{\phi}_i=\frac{\partial H}{\partial J_i}$ sólo dependen de las coordenadas $J$ $\implies$ $\nu_i$ son constantes en cada toro.
+   \end{frame}
+
+\begin{frame}{Integrabilidad por cuadraturas (2)}
+     Las ecuaciones quedan integradas en la forma
+     \begin{equation*}
+       \begin{cases}
+	 J_i(t)=J_i(0) \\
+	 \phi_i(t)=\phi_i(0)+\nu_i(J(0))t.
+       \end{cases}
+     \end{equation*}
+
+     Este tipo de flujo en el toro se conoce como \emph{movimiento condicionalmente periódico}. En particular, las trayectorias son densas en el toro si y sólo si las frecuencias $\nu_1,\dots,\nu_n$ son inconmesurables.
+\end{frame}
+
+\begin{frame}{Figuras de Lissajous}
+  \centering
+%  \includegraphics[width=0.5\textwidth]{lissajous}
+  \includegraphics[width=0.8\textwidth]{lissajous}
+\end{frame}
+
+ \begin{frame}{Referencias}
+   \nocite{*}
+   \bibliographystyle{plain}
+   \bibliography{biblio}
+ \end{frame}
+
+ \usebackgroundtemplate{\includegraphics[width=\paperwidth]{all}}
+ \begin{frame}[plain]
+ \end{frame}
+
+% \usebackgroundtemplate{\includegraphics[width=\paperwidth]{arnold.jpg}}
+% \begin{frame}[plain]{\bf \textcolor{red}{¿Alguna pregunta?}}
+%\end{frame}
+\end{document}
